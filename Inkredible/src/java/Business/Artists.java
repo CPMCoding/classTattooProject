@@ -141,6 +141,8 @@ public class Artists {
         System.out.println("Artist's Style: " + artStyle);
     }
     
+    
+    //Used for testing
     public static void main(String[] args){
         Artists a1 = new Artists();
         a1.selectDB("A320");
