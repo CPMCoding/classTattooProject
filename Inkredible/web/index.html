@@ -1,16 +1,206 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .title {
+            font-family: 'Rye', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: 'Rye', cursive;
+        }
+
+        .nav a {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav a:hover {
+            background-color: #333;
+        }
+
+        .nav a img {
+            width: 85px;
+            height: 30px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .text h2 {
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .image img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .cta {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cta button {
+            background-color: #d35400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background-color: #e67e22;
+        }
+
+        /* New Login Button Style */
+        .login-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .login-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+            <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="title">INKREDIBLE</div>
+        <nav class="nav">
+            <a href="index.html">
+                <img src="menuHome.png" alt="Home" title="Home">
+            </a>
+            <a href="design.jsp">
+                <img src="menuDesigns.png" alt="Designs" title="Designs">
+            </a>
+            <a href="artists.jsp">
+                <img src="menuArtists.png" alt="Artists" title="Artists">
+            </a>
+            <a href="schedule.jsp">
+                <img src="menuSchedule.png" alt="Schedule" title="Schedule">
+            </a>
+            <a href="reviews.jsp">
+                <img src="menuReviews.png" alt="Reviews" title="Reviews">
+            </a>
+            <!-- Login Button -->
+            <a href="login.jsp">
+                <button class="login-btn">Login</button>
+                
+            </a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="text">
+            <h1>Welcome to Inkredible: Where Art Meets Skin</h1>
+            <p>At Inkredible, we believe that tattoos are more than just ink on skin—they’re a story, a memory, a work of art that stays with you forever. Whether you’re looking for your first tattoo or adding another piece to your collection, our talented artists are here to bring your vision to life.</p>
+
+            <h2>Our Story</h2>
+            <p>Inkredible started in 2010 with one mission: to create a tattoo parlor that celebrates self-expression and creativity. Founded by tattoo artist and visionary Alex Hart, our studio has grown from a small local shop to a community hub for art enthusiasts and ink lovers alike. Over the years, we’ve helped thousands of clients turn their ideas into incredible tattoos, combining passion, artistry, and professionalism in everything we do.</p>
+
+            <h2>Why Choose Inkredible?</h2>
+            <p><strong>Talented Artists:</strong> Our team consists of award-winning tattoo artists specializing in a wide variety of styles, from realism and traditional tattoos to watercolor and geometric designs.</p>
+            <p><strong>Clean & Safe Environment:</strong> Your safety is our priority. We maintain the highest standards of hygiene and use top-quality, vegan-friendly inks.</p>
+            <p><strong>Personalized Experience:</strong> Every tattoo is unique, and we work closely with you to ensure your design perfectly matches your vision.</p>
+            <p><strong>Community Focus:</strong> We’re more than a tattoo parlor. We host art exhibitions, charity events, and workshops to give back to our local community.</p>
+
+            <div class="cta">
+                <h2>Ready to Get Inked?</h2>
+                <p>Let’s create something Inkredible together. Visit us to consult with our artists, check out our portfolio, or schedule your next session. Walk-ins are always welcome!</p>
+                <button>Schedule a Consultation</button>
+            </div>
+        </div>
+    </div>
+
+
+   
+</body>
 </html>

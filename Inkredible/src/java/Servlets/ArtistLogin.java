@@ -1,49 +1,84 @@
-/*
- * The servlet we will use when an Artist wants to login. 
- */
-package Servlets;
+package servlets;
 
+import Business.Artists;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author tston
- */
+
 @WebServlet(name = "ArtistLogin", urlPatterns = {"/ArtistLogin"})
 public class ArtistLogin extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ArtistLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ArtistLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+        PrintWriter out = response.getWriter();
+        
+        /*System.out.println("");*/ /* System.out.println sends to the console*/
+        
+        //as of lab 6
+        //step 1 read data from previous html
+        try{    
+            String id, pw;
+            id = request.getParameter("employeeId");
+            pw = request.getParameter("password");
+            //printing to confirm its reading the info
+            System.out.println("ID = " + id);
+            System.out.println("Password = " + pw);
 
+            //step 2 get any objects out of session
+                //left blank
+
+            //step 3 create any business objects to complete task 
+
+            Artists a1 = new Artists();   //creates empty object
+            a1.selectDB(id);   //does the DB lookup to find Customer
+            String pwdb = a1.getAPW();
+            String iddb = a1.getAID();
+
+            //step 5 insterted here
+            HttpSession ses1;
+            ses1 = request.getSession();
+            ses1.setAttribute("a1", a1);
+            System.out.println("Employee added to Session");
+            
+            
+
+            //step 4 made decisions
+            if (pw.equals(pwdb)  && id.equals(iddb)) {
+                RequestDispatcher rd = request.getRequestDispatcher("/artistHomepage.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
+                rd.forward(request, response); 
+
+            }
+            else {
+                RequestDispatcher rd = request.getRequestDispatcher("/LoginError.jsp");// Login error screen for incorrect login info. PAGE MAY CHAGE
+                rd.forward(request, response);  
+
+            }//end if else
+        } // end of try
+        
+        catch(Exception e){
+            System.out.println(e);
+        }
+        finally {
+            System.out.println("LoginServelet ending....");
+            out.close();
+        }//end finally
+        
+        //step 5 put any objects in the session that might be needed by the next servlet or html
+        //step 5 is above the if statement
+        
+        //step 6 use requestDispatcher to forward control to the next html or servlet
+        //step 6 is in the decision if else statements
+        
+    }//end precess request
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
