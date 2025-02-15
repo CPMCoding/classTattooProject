@@ -83,7 +83,7 @@ public class Customers {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/Inkredible/TattooProject.accdb");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://TattooProject.accdb");
             
             Statement stmt = con.createStatement();
             String sql = "Select * from Customers where customerID = '" + cID + "'";

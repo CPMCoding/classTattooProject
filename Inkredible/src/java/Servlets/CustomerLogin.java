@@ -44,7 +44,6 @@ public class CustomerLogin extends HttpServlet {
         try{
             Customers c1 = new Customers();
             c1.selectDB(custID);
-            System.out.println("This is the Customer Pass from DB: " + c1.getCPW());
             String pwdb = c1.getCPW();
             
             Appointments a1 = new Appointments();
