@@ -89,7 +89,7 @@ public class Artists {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://TattooProject.accdb");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
             String sql = "Select * from Artists where employeeID = '" + aID + "'";
@@ -116,7 +116,7 @@ public class Artists {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://TattooProject.accdb");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
             String sql = "Update Customers Set password = '" + artPass + "', firstName = '" + artFName + "', lastName = '" + artLName + "', email = '" + artEmail + "', artistStyle = '" + artStyle + "' Where employeeID = '" + artID + "'";
