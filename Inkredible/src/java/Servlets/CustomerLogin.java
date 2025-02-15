@@ -37,7 +37,9 @@ public class CustomerLogin extends HttpServlet {
         
         String custID, custPass;
         custID = request.getParameter("cID"); //depends on ID in JSP page, may change from cID
+        System.out.println("This woulld be the customer ID: " + custID);
         custPass = request.getParameter("pass"); //depends on ID in JSP page, may change from pass
+        System.out.println("This would be the customer Password: " + custPass);
         
         try{
             Customers c1 = new Customers();
@@ -54,11 +56,13 @@ public class CustomerLogin extends HttpServlet {
             System.out.println("Customer added to session");
             
             if(custPass.equals(pwdb)){
-                RequestDispatcher rd = request.getRequestDispatcher("CustomerHomePage.jsp"); //Temp name "CustomerHomePage.jsp" may change
+                System.out.println("Hello1");
+                RequestDispatcher rd = request.getRequestDispatcher("design.jsp"); //Temp name "CustomerHomePage.jsp" may change
                 rd.forward(request,response);
+                System.out.println("Hello2");
             }
             else{
-                RequestDispatcher rd = request.getRequestDispatcher("LoginError.jsp"); //Temp name "LoginError.jsp" may change
+                RequestDispatcher rd = request.getRequestDispatcher("artists.jsp"); //Temp name "LoginError.jsp" may change
                 rd.forward(request,response);
             }
             
