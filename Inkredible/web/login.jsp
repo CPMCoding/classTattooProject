@@ -76,9 +76,9 @@
 <body>
     <div class="login-container">
         <h2>Login to Inkredible</h2>
-        <form action="login.jsp" method="post">
-            <input type="text" name="username" class="input-field" placeholder="Username" required>
-            <input type="password" name="password" class="input-field" placeholder="Password" required>
+        <form action="http://localhost:8080/Inkredible/CustomerLogin" method="post">  <!-- added correct action -->
+            <input type="text" name="username" id = "cID" class="input-field" placeholder="Username" required>
+            <input type="password" name="password" id = "pass" class="input-field" placeholder="Password" required>
             <button type="submit" class="login-btn">Login</button>
         </form>
         <div class="error-msg">
