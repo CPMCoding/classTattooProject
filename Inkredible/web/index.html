@@ -1,217 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: black;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
 
-        .sidebar {
-            width: 200px;
-            background-color: black;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            .wrapper {
+                flex: 1;
+                display: flex;
+            }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-        }
+            .sidebar {
+                width: 250px;
+                background-color: black;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+            }
 
-        .logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+            .logo {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 20px;
+            }
 
-        .title {
-            font-family: 'Rye', cursive;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
 
-        .nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-family: 'Rye', cursive;
-        }
+            .title {
+                font-family: 'Rye', cursive;
+                font-size: 24px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
 
-        .nav a {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            border-radius: 5px;
-            cursor: pointer;
-            padding: 10px;
-            text-align: center;
-        }
+            .nav {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-family: 'Rye', cursive;
+            }
 
-        .nav a:hover {
-            background-color: #333;
-        }
+            .nav a {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 10px;
+                text-align: center;
+            }
 
-        .nav a img {
-            width: 85px;
-            height: 30px;
-        }
+            .nav a:hover {
+                background-color: #333;
+            }
 
-        .content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
+            .nav a img {
+                width: 85px;
+                height: 30px;
+            }
 
-        .text {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+            .login-btn button {
+                background-color: #d35400;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 20px;
+            }
 
-        .text h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
+            .login-btn button:hover {
+                background-color: #e67e22;
+            }
 
-        .text h2 {
-            font-size: 28px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
+            .content {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-right: 270px;
+            }
 
-        .text p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-         /* Image Above H1 */
-        .top-image img {
-            display: block;
-            margin: 0 auto 20px; /* Centers image and adds space below */
-           
-            height: auto;
-            width: 500px;
-        }
+            .text {
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
-        .image img {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+            .text h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
 
-        .cta {
-            margin-top: 20px;
-            text-align: center;
-        }
+            .text h2 {
+                font-size: 28px;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
 
-        .cta button {
-            background-color: #d35400;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+            .text p {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
 
-        .cta button:hover {
-            background-color: #e67e22;
-        }
+            .top-image img {
+                display: block;
+                margin: 0 auto 20px;
+                height: auto;
+                width: 800px;
+            }
 
-        /* New Login Button Style */
-        .login-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
+            .cta {
+                margin-top: 20px;
+                text-align: center;
+            }
 
-        .login-btn:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <div class="logo">
-            <a href="index.html">
-            <img src="logo.png" alt="Logo">
-            </a>
-        </div>
-        <div class="title">INKREDIBLE</div>
-        <nav class="nav">
-            <a href="index.html">
-                <img src="menuHome.png" alt="Home" title="Home">
-            </a>
-            <a href="design.jsp">
-                <img src="menuDesigns.png" alt="Designs" title="Designs">
-            </a>
-            <a href="artists.jsp">
-                <img src="menuArtists.png" alt="Artists" title="Artists">
-            </a>
-            <a href="schedule.jsp">
-                <img src="menuSchedule.png" alt="Schedule" title="Schedule">
-            </a>
-            <a href="reviews.jsp">
-                <img src="menuReviews.png" alt="Reviews" title="Reviews">
-            </a>
-            <!-- Login Button -->
-            <a href="login.jsp">
-                <button class="login-btn">Login</button>
-                
-            </a>
-        </nav>
-    </div>
+            .cta button {
+                background-color: #d35400;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
 
-    <div class="content">
-        <div class="text">
-             <!-- Centered Image Above H1 -->
-            <div class="top-image">
-                 <img src="TattooShop.jpg" alt="Top Tattoo Shop Image" >
-            <h1>Welcome to Inkredible: Where Art Meets Skin</h1>
-            <p>At Inkredible, we believe that tattoos are more than just ink on skin—they’re a story, a memory, a work of art that stays with you forever. Whether you’re looking for your first tattoo or adding another piece to your collection, our talented artists are here to bring your vision to life.</p>
+            .cta button:hover {
+                background-color: #e67e22;
+            }
 
-            <h2>Our Story</h2>
-            <p>Inkredible started in 2010 with one mission: to create a tattoo parlor that celebrates self-expression and creativity. Founded by tattoo artist and visionary Alex Hart, our studio has grown from a small local shop to a community hub for art enthusiasts and ink lovers alike. Over the years, we’ve helped thousands of clients turn their ideas into incredible tattoos, combining passion, artistry, and professionalism in everything we do.</p>
+            .services, .testimonials {
+                background-color: #333;
+                color: white;
+                padding: 20px;
+                margin-top: 40px;
+                width: 100%;
+            }
 
-            <h2>Why Choose Inkredible?</h2>
-            <p><strong>Talented Artists:</strong> Our team consists of award-winning tattoo artists specializing in a wide variety of styles, from realism and traditional tattoos to watercolor and geometric designs.</p>
-            <p><strong>Clean & Safe Environment:</strong> Your safety is our priority. We maintain the highest standards of hygiene and use top-quality, vegan-friendly inks.</p>
-            <p><strong>Personalized Experience:</strong> Every tattoo is unique, and we work closely with you to ensure your design perfectly matches your vision.</p>
-            <p><strong>Community Focus:</strong> We’re more than a tattoo parlor. We host art exhibitions, charity events, and workshops to give back to our local community.</p>
+            .services h2, .testimonials h2 {
+                font-size: 30px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
 
-            <div class="cta">
-                <h2>Ready to Get Inked?</h2>
-                <p>Let’s create something Inkredible together. Visit us to consult with our artists, check out our portfolio, or schedule your next session. Walk-ins are always welcome!</p>
-                <button>Schedule a Consultation</button>
+            .services ul, .testimonials blockquote {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-top: 15px;
+            }
+
+            footer {
+                background-color: #222;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                margin-top: auto;
+            }
+
+            footer a {
+                color: #d35400;
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            /* Modal Styles */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                color: black; /* Add this line to change the text color */
+            }
+
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .modal-content p {
+                font-size: 16px;
+            }
+        </style>
+        <script>
+            function openModal(content) {
+                document.getElementById(content).style.display = "block";
+            }
+
+            function closeModal(content) {
+                document.getElementById(content).style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Logo">
+                    </a>
+                </div>
+                <div class="title">INKREDIBLE</div>
+                <nav class="nav">
+                    <a href="index.html">
+                        <img src="images/menuHome.png" alt="Home" title="Home">
+                    </a>
+                    <a href="design.jsp">
+                        <img src="images/menuDesigns.png" alt="Designs" title="Designs">
+                    </a>
+                    <a href="artists.jsp">
+                        <img src="images/menuArtists.png" alt="Artists" title="Artists">
+                    </a>
+                    <a href="schedule.jsp">
+                        <img src="images/menuSchedule.png" alt="Schedule" title="Schedule">
+                    </a>
+                    <a href="reviews.jsp">
+                        <img src="images/menuReviews.png" alt="Reviews" title="Reviews">
+                    </a>
+                </nav>
+                <a href="login.jsp" class="login-btn">
+                    <button>Login</button>
+                </a>
+            </div>
+
+            <div class="content">
+                <div class="text">
+                    <div class="top-image">
+                        <img src="images/tattooStudio_1.jpg" alt="Top Tattoo Shop Image">
+                    </div>
+                    <h1>Welcome to Inkredible: Where Art Meets Skin</h1>
+                    <p>At Inkredible, we believe that tattoos are more than just ink on skin—they’re a story, a memory, a work of art that stays with you forever.</p>
+
+                    <h2>Our Story</h2>
+                    <p>Inkredible started in 2010 with one mission: to create a tattoo parlor that celebrates self-expression and creativity.</p>
+
+                    <h2>Why Choose Inkredible?</h2>
+                    <p><strong>Talented Artists:</strong> Our team consists of award-winning tattoo artists specializing in a wide variety of styles.</p>
+                    <p><strong>Clean & Safe Environment:</strong> Your safety is our priority.</p>
+
+                    <div class="services">
+                        <h2>Our Services</h2>
+                        <ul>
+                            <li>Custom Tattoos</li>
+                            <li>Cover-Up Tattoos</li>
+                            <li>Permanent Makeup</li>
+                            <li>Body Piercing</li>
+                            <li>Consultations</li>
+                        </ul>
+                    </div>
+
+                    <div class="testimonials">
+                        <h2>What Our Clients Say</h2>
+                        <blockquote>
+                            "I’ve been getting tattoos here for years, and I wouldn't trust anyone else. The artists are incredibly skilled, and the atmosphere is always welcoming!"
+                        </blockquote>
+                        <blockquote>
+                            "The best tattoo experience ever! I felt so comfortable and loved the final design. Highly recommend Inkredible!"
+                        </blockquote>
+                    </div>
+
+                    <div class="cta">
+                        <h2>Ready to Get Inked?</h2>
+                        <a href="schedule.jsp">
+                            <button>Schedule a Consultation</button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
+        <footer>
+            <p><strong>Contact Us:</strong> Phone: (123) 456-7890 | Email: <a href="mailto:contact@inkredible.com">contact@inkredible.com</a></p>
+            <p><strong>Operating Hours:</strong> Monday - Saturday: 10 AM - 8 PM | Sunday: Closed</p>
+            <p><strong>Follow Us:</strong> 
+                <a href="https://instagram.com" target="_blank">Instagram</a> | 
+                <a href="https://facebook.com" target="_blank">Facebook</a> | 
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </p>
+            <p>© 2025 Inkredible. All rights reserved.</p>
+            <p>
+                <a href="javascript:void(0)" onclick="openModal('termsModal')">Terms of Service</a> |
+                <a href="javascript:void(0)" onclick="openModal('privacyModal')">Privacy Policy</a>
+            </p>
+        </footer>
 
-   
-</body>
+        <!-- Terms of Service Modal -->
+        <div id="termsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('termsModal')">&times;</span>
+                <h2>Terms of Service</h2>
+                <p>Welcome to Inkredible! By accessing or using our services, you agree to comply with the following terms and conditions. Please read them carefully.</p>
+
+                <h3>1. Services Provided</h3>
+                <p>Inkredible provides custom tattoo services, body piercing, and related products. Our artists work to create personalized designs that reflect your ideas and preferences.</p>
+
+                <h3>2. Appointments and Cancellations</h3>
+                <p>To book an appointment, you must provide a valid form of identification and a deposit. Cancellations or rescheduling of appointments must be made at least 24 hours in advance to avoid a cancellation fee.</p>
+
+                <h3>3. Age Requirements</h3>
+                <p>You must be at least 18 years old to receive a tattoo or piercing. If you are under 18, parental consent is required. Inkredible reserves the right to verify your age before proceeding with services.</p>
+
+                <h3>4. Health and Safety</h3>
+                <p>Your health and safety are our top priority. All services are provided in a clean and sterile environment, adhering to industry standards. We require all clients to disclose any medical conditions that may affect the procedure.</p>
+
+                <h3>5. Liability</h3>
+                <p>Inkredible is not responsible for any allergic reactions, infections, or other complications resulting from our services. Clients are advised to follow aftercare instructions to ensure proper healing.</p>
+
+                <h3>6. Payment</h3>
+                <p>Payment for services is due upon completion of the tattoo or piercing. We accept various forms of payment, including credit cards and cash. Deposits for appointments are non-refundable.</p>
+
+                <h3>7. Intellectual Property</h3>
+                <p>All tattoo designs created by our artists are the intellectual property of Inkredible. You may not copy, reproduce, or distribute designs without express permission from the artist or the studio.</p>
+
+                <h3>8. Right to Refuse Service</h3>
+                <p>Inkredible reserves the right to refuse service to anyone for any reason, including but not limited to inappropriate behavior, intoxication, or failure to meet age or health requirements.</p>
+
+                <h3>9. Changes to Terms</h3>
+                <p>We may update these Terms of Service from time to time. Please check this page periodically for any changes. By continuing to use our services, you agree to be bound by the updated terms.</p>
+
+                <h3>10. Contact Us</h3>
+                <p>If you have any questions about these Terms of Service, please contact us at <a href="mailto:contact@inkredible.com">contact@inkredible.com</a>.</p>
+
+            </div>
+        </div>
+
+        <!-- Privacy Policy Modal -->
+        <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+                <h2>Privacy Policy</h2>
+                <p>At Inkredible, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and protect your data when you use our website and services.</p>
+
+                <h3>1. Information We Collect</h3>
+                <p>We collect personal information such as your name, contact details, and medical history when you book an appointment or contact us. We may also collect information about your tattoos and preferences to improve our services.</p>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>Your personal information is used to provide our services, manage your appointments, and communicate with you about upcoming sessions, promotions, and aftercare instructions. We may also use your information to send you newsletters and offers, but only with your consent.</p>
+
+                <h3>3. Sharing Your Information</h3>
+                <p>We do not share your personal information with third parties, except when required by law or when we work with trusted partners to provide our services. These partners are obligated to keep your information confidential.</p>
+
+                <h3>4. Data Security</h3>
+                <p>We take appropriate measures to protect your personal information from unauthorized access, alteration, or destruction. Our website uses secure encryption methods to protect your data during transactions.</p>
+
+                <h3>5. Cookies and Tracking Technologies</h3>
+                <p>We use cookies and similar technologies to enhance your user experience, analyze website traffic, and deliver personalized content. You can control the use of cookies through your browser settings.</p>
+
+                <h3>6. Your Rights</h3>
+                <p>You have the right to access, update, or delete the personal information we hold about you. If you wish to exercise any of these rights, please contact us at <a href="mailto:contact@inkredible.com">contact@inkredible.com</a>.</p>
+
+                <h3>7. Changes to Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the revised policy will be effective immediately upon posting.</p>
+
+                <h3>8. Contact Us</h3>
+                <p>If you have any questions or concerns about our Privacy Policy, please reach out to us at <a href="mailto:contact@inkredible.com">contact@inkredible.com</a>.</p>
+
+            </div>
+        </div>
+    </body>
 </html>
