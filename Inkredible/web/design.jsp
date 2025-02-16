@@ -12,7 +12,7 @@
             color: white;
             display: flex;
             height: 100vh;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .sidebar {
@@ -74,24 +74,43 @@
 
         .content {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
-            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
 
-        .text {
+        .design-slot {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
             text-align: center;
-            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
-        .image img {
+        .design-slot img {
             width: 100%;
             height: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
+            border-radius: 8px;
+        }
+
+        .design-slot h2 {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #d35400;
+        }
+
+        .design-slot p {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        .design-slot .artists {
+            font-size: 12px;
+            color: #aaa;
         }
     </style>
 </head>
@@ -123,14 +142,45 @@
     </div>
 
     <div class="content">
-        <div class="text">
-            <h1>Designs</h1>
-            <p>Explore our range of tattoo designs and styles crafted by our talented artists.</p>
+        <!-- Design Slot 1 -->
+        <div class="design-slot">
+            <img src="placeholder1.jpg" alt="Realism Tattoo">
+            <h2>Realism Tattoos</h2>
+            <p>Hyper-realistic designs that bring your vision to life.</p>
+            <div class="artists">Artists: Jose Garcia, John Licata</div>
         </div>
-    </div>
 
-    <div class="image">
-        <img src="background2.png" alt="Background" title="Background">
+        <!-- Design Slot 2 -->
+        <div class="design-slot">
+            <img src="placeholder2.jpg" alt="Traditional Tattoo">
+            <h2>Traditional Tattoos</h2>
+            <p>Bold lines and vibrant colors rooted in classic tattoo art.</p>
+            <div class="artists">Artists: Martin Christopher, Jose Alexis</div>
+        </div>
+
+        <!-- Design Slot 3 -->
+        <div class="design-slot">
+            <img src="placeholder3.jpg" alt="Watercolor Tattoo">
+            <h2>Watercolor Tattoos</h2>
+            <p>Delicate and artistic designs inspired by watercolor painting.</p>
+            <div class="artists">Artists: John Licata, Touchstone Bryce</div>
+        </div>
+
+        <!-- Design Slot 4 -->
+        <div class="design-slot">
+            <img src="placeholder4.jpg" alt="Geometric Tattoo">
+            <h2>Geometric Tattoos</h2>
+            <p>Modern designs featuring intricate patterns and symmetry.</p>
+            <div class="artists">Artists: Jose Alexis, Jose Garcia</div>
+        </div>
+
+        <!-- Design Slot 5 -->
+        <div class="design-slot">
+            <img src="placeholder5.jpg" alt="Minimalist Tattoo">
+            <h2>Minimalist Tattoos</h2>
+            <p>Simple, clean, and elegant tattoo designs.</p>
+            <div class="artists">Artists: Touchstone Bryce, Martin Christopher</div>
+        </div>
     </div>
 </body>
 </html>
