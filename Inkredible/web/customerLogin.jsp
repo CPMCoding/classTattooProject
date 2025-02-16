@@ -34,6 +34,22 @@
             font-size: 24px;
             font-weight: 600;
         }
+         .home-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
 
         .input-field {
             width: 100%;
@@ -75,6 +91,9 @@
 </head>
 <body>
     <div class="login-container">
+         <a href="index.html">
+            <button class="home-btn">Home</button>
+        </a>
         <h2>Login to Inkredible</h2>
         <form action="CustomerLogin" method="post">  <!-- added correct action -->
             <input type="text" name="cID" id = "cID" class="input-field" placeholder="Username" required>
