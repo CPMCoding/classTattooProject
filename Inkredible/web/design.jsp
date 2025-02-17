@@ -180,7 +180,7 @@
         <!-- Design Slot 1 -->
         <div class="design-slot">
             <div class="slide-container">
-                <img class="slides" src="img/realismTattoo.jpg" alt="Realism Tattoo 1">
+                <img class="slides" src="img/realismTattoo_1.jpg" alt="Realism Tattoo 1">
                 <img class="slides" src="img/realismTattoo_2.jpg" alt="Realism Tattoo 2">
                 <img class="slides" src="img/realismTattoo_3.jpg" alt="Realism Tattoo 3">
                 <button class="prev" onclick="moveSlide(-1, 0)">&#10094;</button>
