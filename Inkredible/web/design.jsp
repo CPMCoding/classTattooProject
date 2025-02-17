@@ -92,7 +92,7 @@
 
         .design-slot img {
             width: 100%;
-            height: auto;
+            height: 100%;
             border-radius: 8px;
         }
 
@@ -112,6 +112,41 @@
             font-size: 12px;
             color: #aaa;
         }
+
+        .slide-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transform: translateY(-50%);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+       
     </style>
 </head>
 <body>
@@ -144,7 +179,13 @@
     <div class="content">
         <!-- Design Slot 1 -->
         <div class="design-slot">
-            <img src="placeholder1.jpg" alt="Realism Tattoo">
+            <div class="slide-container">
+                <img class="slides" src="img/realismTattoo.jpg" alt="Realism Tattoo 1">
+                <img class="slides" src="img/realismTattoo_2.jpg" alt="Realism Tattoo 2">
+                <img class="slides" src="img/realismTattoo_3.jpg" alt="Realism Tattoo 3">
+                <button class="prev" onclick="moveSlide(-1, 0)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 0)">&#10095;</button>
+            </div>
             <h2>Realism Tattoos</h2>
             <p>Hyper-realistic designs that bring your vision to life.</p>
             <div class="artists">Artists: Jose Garcia, John Licata</div>
@@ -152,7 +193,13 @@
 
         <!-- Design Slot 2 -->
         <div class="design-slot">
-            <img src="placeholder2.jpg" alt="Traditional Tattoo">
+            <div class="slide-container">
+                <img class="slides" src="images/traditional1.jpg" alt="Traditional Tattoo 1">
+                <img class="slides" src="images/traditional2.jpg" alt="Traditional Tattoo 2">
+                <img class="slides" src="images/traditional3.jpg" alt="Traditional Tattoo 3">
+                <button class="prev" onclick="moveSlide(-1, 1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 1)">&#10095;</button>
+            </div>
             <h2>Traditional Tattoos</h2>
             <p>Bold lines and vibrant colors rooted in classic tattoo art.</p>
             <div class="artists">Artists: Martin Christopher, Jose Alexis</div>
@@ -160,7 +207,13 @@
 
         <!-- Design Slot 3 -->
         <div class="design-slot">
-            <img src="placeholder3.jpg" alt="Watercolor Tattoo">
+            <div class="slide-container">
+                <img class="slides" src="images/watercolor1.jpg" alt="Watercolor Tattoo 1">
+                <img class="slides" src="images/watercolor2.jpg" alt="Watercolor Tattoo 2">
+                <img class="slides" src="images/watercolor3.jpg" alt="Watercolor Tattoo 3">
+                <button class="prev" onclick="moveSlide(-1, 2)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 2)">&#10095;</button>
+            </div>
             <h2>Watercolor Tattoos</h2>
             <p>Delicate and artistic designs inspired by watercolor painting.</p>
             <div class="artists">Artists: John Licata, Touchstone Bryce</div>
@@ -168,7 +221,13 @@
 
         <!-- Design Slot 4 -->
         <div class="design-slot">
-            <img src="placeholder4.jpg" alt="Geometric Tattoo">
+            <div class="slide-container">
+                <img class="slides" src="images/geometric1.jpg" alt="Geometric Tattoo 1">
+                <img class="slides" src="images/geometric2.jpg" alt="Geometric Tattoo 2">
+                <img class="slides" src="images/geometric3.jpg" alt="Geometric Tattoo 3">
+                <button class="prev" onclick="moveSlide(-1, 3)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 3)">&#10095;</button>
+            </div>
             <h2>Geometric Tattoos</h2>
             <p>Modern designs featuring intricate patterns and symmetry.</p>
             <div class="artists">Artists: Jose Alexis, Jose Garcia</div>
@@ -176,11 +235,41 @@
 
         <!-- Design Slot 5 -->
         <div class="design-slot">
-            <img src="placeholder5.jpg" alt="Minimalist Tattoo">
+            <div class="slide-container">
+                <img class="slides" src="images/minimalist1.jpg" alt="Minimalist Tattoo 1">
+                <img class="slides" src="images/minimalist2.jpg" alt="Minimalist Tattoo 2">
+                <img class="slides" src="images/minimalist3.jpg" alt="Minimalist Tattoo 3">
+                <button class="prev" onclick="moveSlide(-1, 4)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 4)">&#10095;</button>
+            </div>
             <h2>Minimalist Tattoos</h2>
             <p>Simple, clean, and elegant tattoo designs.</p>
             <div class="artists">Artists: Touchstone Bryce, Martin Christopher</div>
         </div>
     </div>
+
+    <script>
+        let slideIndex = [0, 0, 0, 0, 0];
+        const slideContainers = document.querySelectorAll('.slide-container');
+
+        function moveSlide(step, slot) {
+            const slides = slideContainers[slot].getElementsByClassName('slides');
+            slideIndex[slot] += step;
+            if (slideIndex[slot] >= slides.length) slideIndex[slot] = 0;
+            if (slideIndex[slot] < 0) slideIndex[slot] = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[slideIndex[slot]].style.display = 'block';
+        }
+
+        // Initialize the slides on page load
+        window.onload = () => {
+            for (let i = 0; i < slideContainers.length; i++) {
+                moveSlide(0, i);
+            }
+        };
+    </script>
+       
 </body>
 </html>
