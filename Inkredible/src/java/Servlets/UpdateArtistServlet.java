@@ -1,4 +1,4 @@
-package servlets;
+package Servlets;
 
 import Business.Artists;
 import java.io.IOException;

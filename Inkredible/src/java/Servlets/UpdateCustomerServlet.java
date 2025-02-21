@@ -1,4 +1,4 @@
-package servlets;
+package Servlets;
 
 import Business.Customers;
 import java.io.IOException;

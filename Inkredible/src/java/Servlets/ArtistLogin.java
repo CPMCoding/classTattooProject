@@ -1,6 +1,7 @@
-package servlets;
+package Servlets;
 
 import Business.Artists;
+import Business.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -41,23 +42,37 @@ public class ArtistLogin extends HttpServlet {
             a1.selectDB(id);   //does the DB lookup to find Customer
             String pwdb = a1.getAPW();
             String iddb = a1.getAID();
+            
+            Admin adm1 = new Admin();
+            adm1.selectDB(id);
+            String adpwdb = adm1.getADPW();
+            String adiddb = adm1.getADID();
+            
+            System.out.println("ADMIN DB READ");
 
             //step 5 insterted here
             HttpSession ses1;
             ses1 = request.getSession();
             ses1.setAttribute("a1", a1);
+            ses1.setAttribute("adm1", adm1);
             System.out.println("Employee added to Session");
             
             
 
             //step 4 made decisions
             if (pw.equals(pwdb)  && id.equals(iddb)) {
-                RequestDispatcher rd = request.getRequestDispatcher("/artistHomepage.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
+                RequestDispatcher rd = request.getRequestDispatcher("/artists.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
                 rd.forward(request, response); 
 
             }
+            
+            else if (pw.equals(adpwdb)  && id.equals(adiddb)) {
+                RequestDispatcher rd = request.getRequestDispatcher("/schedule.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
+                rd.forward(request, response);
+            }
+            
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("/LoginError.jsp");// Login error screen for incorrect login info. PAGE MAY CHAGE
+                RequestDispatcher rd = request.getRequestDispatcher("/design.jsp");// Login error screen for incorrect login info. PAGE MAY CHAGE
                 rd.forward(request, response);  
 
             }//end if else
