@@ -27,7 +27,7 @@ public class ArtistLogin extends HttpServlet {
         //step 1 read data from previous html
         try{    
             String id, pw;
-            id = request.getParameter("employeeId");
+            id = request.getParameter("username");
             pw = request.getParameter("password");
             //printing to confirm its reading the info
             System.out.println("ID = " + id);
@@ -37,7 +37,7 @@ public class ArtistLogin extends HttpServlet {
                 //left blank
 
             //step 3 create any business objects to complete task 
-
+            
             Artists a1 = new Artists();   //creates empty object
             a1.selectDB(id);   //does the DB lookup to find Customer
             String pwdb = a1.getAPW();
@@ -67,7 +67,7 @@ public class ArtistLogin extends HttpServlet {
             }
             
             else if (pw.equals(adpwdb)  && id.equals(adiddb)) {
-                RequestDispatcher rd = request.getRequestDispatcher("/schedule.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
+                RequestDispatcher rd = request.getRequestDispatcher("/index.html"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
                 rd.forward(request, response);
             }
             
