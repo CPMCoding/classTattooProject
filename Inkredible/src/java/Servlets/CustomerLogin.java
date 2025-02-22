@@ -42,20 +42,21 @@ public class CustomerLogin extends HttpServlet {
         System.out.println("This would be the customer Password: " + custPass);
         
         try{
-            Customers c1 = new Customers();
-            c1.selectDB(custID);
-            String pwdb = c1.getCPW();
+            Customers c1 = new Customers(); //creates the customer object
+            c1.selectDB(custID); //Selects the account info from database with the user input ID which was grabbed earlier 
+            String pwdb = c1.getCPW(); //Gets the password of the user
+            String iddb = c1.getCID(); // gets the ID of the user
             
-            Appointments a1 = new Appointments();
-            a1.selectCustDB(custID);
+            Appointments a1 = new Appointments(); // creates the appointmetn object 
+            a1.selectCustDB(custID);  //selects the appointment based on customer ID
             
             HttpSession ses1;
-            ses1 = request.getSession();
+            ses1 = request.getSession();  // creating session 
             ses1.setAttribute("c1", c1); //Telling the sesion what the attribute is for the customer class
             ses1.setAttribute("a1", a1); //Telling the session what the attribute is for the Appointments class 
             System.out.println("Customer added to session");
             
-            if(custPass.equals(pwdb)){
+            if(custPass.equals(pwdb) && custID.equals(iddb)){  // verifying login info which includes ID and password 
                 System.out.println("Hello1");
                 RequestDispatcher rd = request.getRequestDispatcher("design.jsp"); //Temp name "CustomerHomePage.jsp" may change
                 rd.forward(request,response);
