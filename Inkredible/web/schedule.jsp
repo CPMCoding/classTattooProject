@@ -38,24 +38,24 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="img/logo.png" alt="Logo">
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
-            <a href="home.jsp">
-                <img src="menuHome.png" alt="Home" title="Home">
+            <a href="index.jsp">
+                <img src="img/menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">
-                <img src="menuDesigns.png" alt="Designs" title="Designs">
+                <img src="img/menuDesigns.png" alt="Designs" title="Designs">
             </a>
             <a href="artists.jsp">
-                <img src="menuArtists.png" alt="Artists" title="Artists">
+                <img src="img/menuArtists.png" alt="Artists" title="Artists">
             </a>
             <a href="schedule.jsp">
-                <img src="menuSchedule.png" alt="Schedule" title="Schedule">
+                <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
             </a>
             <a href="reviews.jsp">
-                <img src="menuReviews.png" alt="Reviews" title="Reviews">
+                <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
             </a>
         </nav>
     </div>
@@ -65,8 +65,8 @@
             <th>Day</th>
             <th>Opening Hours</th>
         </tr>
-        <% 
-            // List of schedule entries
+        <%
+            // Class declaration
             class ScheduleEntry {
                 String day, hours;
                 ScheduleEntry(String day, String hours) {
@@ -74,8 +74,10 @@
                     this.hours = hours;
                 }
             }
-            
-            List<ScheduleEntry> schedule = new ArrayList<>();
+
+            // Initialize the schedule list
+            List<ScheduleEntry> schedule = new ArrayList<ScheduleEntry>();
+
             schedule.add(new ScheduleEntry("Monday", "10:00 AM - 8:00 PM"));
             schedule.add(new ScheduleEntry("Tuesday", "10:00 AM - 8:00 PM"));
             schedule.add(new ScheduleEntry("Wednesday", "10:00 AM - 8:00 PM"));
@@ -83,7 +85,8 @@
             schedule.add(new ScheduleEntry("Friday", "10:00 AM - 10:00 PM"));
             schedule.add(new ScheduleEntry("Saturday", "12:00 PM - 10:00 PM"));
             schedule.add(new ScheduleEntry("Sunday", "Closed"));
-            
+
+            // Iterate through the list and display entries
             for (ScheduleEntry entry : schedule) {
         %>
         <tr>

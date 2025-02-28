@@ -38,24 +38,24 @@
 <body>
 <div class="sidebar">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="img/logo.png" alt="Logo">
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
-            <a href="home.jsp">
-                <img src="menuHome.png" alt="Home" title="Home">
+            <a href="index.jsp">
+                <img src="img/menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">
-                <img src="menuDesigns.png" alt="Designs" title="Designs">
+                <img src="img/menuDesigns.png" alt="Designs" title="Designs">
             </a>
             <a href="artists.jsp">
-                <img src="menuArtists.png" alt="Artists" title="Artists">
+                <img src="img/menuArtists.png" alt="Artists" title="Artists">
             </a>
             <a href="schedule.jsp">
-                <img src="menuSchedule.png" alt="Schedule" title="Schedule">
+                <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
             </a>
             <a href="reviews.jsp">
-                <img src="menuReviews.png" alt="Reviews" title="Reviews">
+                <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
             </a>
         </nav>
     </div>
@@ -77,7 +77,8 @@
                 }
             }
             
-            List<Review> reviews = new ArrayList<>();
+            List<Review> reviews = new ArrayList<Review>();
+
             reviews.add(new Review("Garcia Jose", "5 Stars", "Amazing tattoo work! Highly recommend."));
             reviews.add(new Review("John Licata", "4 Stars", "Great experience, but the wait time was long."));
             reviews.add(new Review("Martin Christopher", "5 Stars", "Best tattoo studio!"));
