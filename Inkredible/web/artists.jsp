@@ -159,7 +159,7 @@
                 His works are a blend of technical expertise and artistic flair.</p>
             <div class="slideshow-container">
                 <div class="slides">
-                    <img src="img/artist1_1.jpg" alt="Artist 1 Picture 1">
+                    <img src="img/realismTattoo_1.jpg" alt="Artist 1 Picture 1">
                 </div>
                 <div class="slides">
                     <img src="img/artist1_2.jpg" alt="Artist 1 Picture 2">
