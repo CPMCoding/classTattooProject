@@ -13,6 +13,11 @@
             color: white;
         }
 
+		a {
+			text-decoration: none !important;
+			color:white;
+		}
+
         .sidebar {
             width: 200px;
             background-color: black;
@@ -151,7 +156,7 @@
         <p>Meet our talented tattoo artists who bring your visions to life with their expertise and creativity.</p>
 
         <!-- Artist 1 -->
-        <div class="artist-box">
+        <a href=artist1.jsp><div class="artist-box">
             <h2>Jose Garcia</h2>
             <p>Specialization: Realism Tattoos & Geometric Tattoos
                 Jose is a master of hyper-realistic designs, turning ideas into lifelike art.
@@ -176,7 +181,7 @@
                 <button class="prev" onclick="plusSlides(-1)">❮</button>
                 <button class="next" onclick="plusSlides(1)">❯</button>
             </div>
-        </div>
+        </div></a>
         <!-- Artist 2 -->
         <div class="artist-box">
             <h2>John Licata</h2>
