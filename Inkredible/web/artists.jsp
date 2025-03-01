@@ -157,14 +157,15 @@
         <p>Meet our talented tattoo artists who bring your visions to life with their expertise and creativity.</p>
 
         <!-- Artist 1 -->
-        <a href=artist1.jsp><div class="artist-box">
-            <h2>Jose Garcia</h2>
+        <div class="artist-box">
+            <a href=artist1.jsp>
+			<h2>Jose Garcia</h2>
             <p>Specialization: Realism Tattoos & Geometric Tattoos
                 Jose is a master of hyper-realistic designs, turning ideas into lifelike art.
                 With a keen eye for detail, he excels at crafting geometric patterns that captivate with their symmetry and precision. 
-                His works are a blend of technical expertise and artistic flair.</p>
+                His works are a blend of technical expertise and artistic flair.</p></a>
             <div class="slideshow-container">
-                <div class="slides">
+                <a href=artist1.jsp><div class="slides">
                     <img src="img/realismTattoo_1.jpg" alt="Artist 1 Picture 1">
                 </div>
                 <div class="slides">
@@ -179,10 +180,12 @@
                 <div class="slides">
                     <img src="img/artist1_5.jpg" alt="Artist 1 Picture 5">
                 </div>
+				</a>
                 <button class="prev" onclick="plusSlides(-1)">❮</button>
                 <button class="next" onclick="plusSlides(1)">❯</button>
+				
             </div>
-        </div></a>
+        </div>
         <!-- Artist 2 -->
         <div class="artist-box">
             <h2>John Licata</h2>
