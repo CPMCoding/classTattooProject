@@ -83,7 +83,7 @@
             background-color: #e67e22;
         }
 
-        .error-msg {
+        .Sign-up {
             color: red;
             font-size: 14px;
             margin-top: 10px;
@@ -101,9 +101,11 @@
             <input type="password" name="pass" id = "pass" class="input-field" placeholder="Password" required>
             <button type="submit" class="login-btn">Login</button>
         </form>
-        <div class="error-msg">
-            <!-- Error message for invalid -->
-            <p>Invalid credentials, please try again.</p>
+        <div class="Sign-up">
+            <!-- signup link -->
+            <a href="customerSignup.jsp">
+            <p>New Customer Signup!</p>
+            </a>
         </div>
     </div>
 </body>
