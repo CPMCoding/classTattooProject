@@ -132,6 +132,36 @@ public class Artists {
         }
     }
     
+    public void insertDB(String aid, String apw, String afn, String aln, String aem, String asy){
+        setAID(aid);
+        setAPW(apw);
+        setAFN(afn);
+        setALN(aln);
+        setAEM(aem);
+        setASY(asy);
+        
+        
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Insert into Patients values('" + getAID() + "'," + "'" + getAPW() + "'," + "'" + getAFN() + "'," + "'" + getALN() +  "'," + "'" + getAEM() + "'," + "'" + getASY() + "')"; 
+            System.out.println(sql);
+            int n1 = stmt.executeUpdate(sql);
+            if (n1==1){
+                System.out.println("INSERT Successful!!!");
+            }
+            else {
+                System.out.println("INSERT FAILED !!!!!!!!!!!!!!!!!!!");
+            }
+            con.close();
+        }//end try
+        catch(Exception e){
+            System.out.print(e);
+        }
+    }
+    
     public void display(){
         System.out.println("Artist's ID: " + artID);
         System.out.println("Artist's Password: " + artPass);

@@ -123,6 +123,34 @@ public class Customers {
         }
     }
     
+    public void insertDB(String cpw, String cfn, String cln, String cem){
+//        setCID(cid);
+        setCPW(cpw);
+        setCFN(cfn);
+        setCLN(cln);
+        setCEM(cem);
+        
+        
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement(); // + getCID() + "'," + "'" 
+            String sql = "Insert into Customers values('" + getCPW() + "'," + "'" + getCFN() + "'," + "'" + getCLN() +  "'," + "'" + getCEM() + "')"; 
+            System.out.println(sql);
+            int n1 = stmt.executeUpdate(sql);
+            if (n1==1){
+                System.out.println("INSERT Successful!!!");
+            }
+            else {
+                System.out.println("INSERT FAILED !!!!!!!!!!!!!!!!!!!");
+            }
+            con.close();
+        }//end try
+        catch(Exception e){
+            System.out.print(e);
+        }
+    }
     /*
     Displaying Customer data from DB
     */
@@ -136,11 +164,18 @@ public class Customers {
     
    //Used for testing
     public static void main(String[]args){
-        Customers c1 = new Customers();
-        c1.selectDB("A900");
-        c1.setCFN("Andy");
-        c1.setCLN("Jones");
-        c1.updateDB();
-        c1.display();
+        // update test
+//        Customers c1 = new Customers();
+//        c1.selectDB("A900");
+//        c1.setCFN("Andy");
+//        c1.setCLN("Jones");
+//        c1.updateDB();
+//        c1.display();
+    
+        //insert and auto id allocation test
+        Customers c2 = new Customers();
+        c2.insertDB("5555", "chris", "Martin", "c@scho");
+        c2.display();
     }
+    
 }
