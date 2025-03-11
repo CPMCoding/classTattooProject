@@ -20,11 +20,11 @@ public class createCustomerServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
-        String ncid = request.getParameter("datb");
-        String ncpw = request.getParameter("dptb");
-        String ncfn = request.getParameter("dftb");
-        String ncln = request.getParameter("dltb");
-        String ncem = request.getParameter("detb");
+        String ncid = request.getParameter("ncID");
+        String ncpw = request.getParameter("ncPW");
+        String ncfn = request.getParameter("ncFN");
+        String ncln = request.getParameter("ncLN");
+        String ncem = request.getParameter("ncEM");
         
         System.out.println("id: " + ncid);
         System.out.println("pw:  " + ncpw);
@@ -34,24 +34,29 @@ public class createCustomerServlet extends HttpServlet {
         
         HttpSession ses1;
         
-        
+        ///////       make it to where the customer creates a id and submits it, have it be checked against the ids in the database and if it comes back TRUE then make it to where the customer DOES NOT create the account. If it comes back FALSE let it go through
         Customers newCustomer = new Customers();
-//        newCustomer.setCID(ncid);
-        // Code to update the patient in the database
-//        updatedPatient.setPID(upid);
-        newCustomer.setCPW(ncpw);
-        newCustomer.setCFN(ncfn);
-        newCustomer.setCLN(ncln);
-        newCustomer.setCEM(ncem);
-        newCustomer.insertDB(ncpw, ncfn, ncln, ncem);
-        
-        response.sendRedirect("customerEditAccount.jsp");
+        boolean idExists = newCustomer.checkID(ncid);
+
+        if (idExists) {
+            response.sendRedirect("customerIDExists.jsp"); // this will be the warning that the id aleady exists and they need to make a new one
+        } 
+        else {
+            newCustomer.setCID(ncid);
+            newCustomer.setCPW(ncpw);
+            newCustomer.setCFN(ncfn);
+            newCustomer.setCLN(ncln);
+            newCustomer.setCEM(ncem);
+            newCustomer.insertDB(ncid, ncem, ncpw, ncfn, ncln);
+
+            response.sendRedirect("customerHomePage.jsp");
+        }
         } //end of try
         catch(Exception e){
             System.out.println(e);
         }
         finally {
-            System.out.println("UpdatePatientServlet ending...");
+            System.out.println("ID check Servlet ending...");
             out.close();
         }//end finally
     }// end process req

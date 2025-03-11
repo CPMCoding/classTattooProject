@@ -83,7 +83,7 @@ public class Artists {
     // end of buisiness objects below will be for database behaviours
     
     /*
-    This is where we will select the Artist from the customer table in the database 
+    This is where we will select the Artist from the artist table in the database 
     */
     public void selectDB(String aID){
         try{
@@ -119,7 +119,7 @@ public class Artists {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
-            String sql = "Update Customers Set password = '" + artPass + "', firstName = '" + artFName + "', lastName = '" + artLName + "', email = '" + artEmail + "', artistStyle = '" + artStyle + "' Where employeeID = '" + artID + "'";
+            String sql = "Update Artists Set password = '" + artPass + "', firstName = '" + artFName + "', lastName = '" + artLName + "', email = '" + artEmail + "', artistStyle = '" + artStyle + "' Where employeeID = '" + artID + "'";
             System.out.println(sql);
             //executeUpdate needs to be used when updating a database executeQuery won't work here. 
             stmt.executeUpdate(sql);
@@ -146,7 +146,7 @@ public class Artists {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
-            String sql = "Insert into Patients values('" + getAID() + "'," + "'" + getAPW() + "'," + "'" + getAFN() + "'," + "'" + getALN() +  "'," + "'" + getAEM() + "'," + "'" + getASY() + "')"; 
+            String sql = "Insert into Artists values('" + getAID() + "'," + "'" + getAPW() + "'," + "'" + getAFN() + "'," + "'" + getALN() +  "'," + "'" + getAEM() + "'," + "'" + getASY() + "')"; 
             System.out.println(sql);
             int n1 = stmt.executeUpdate(sql);
             if (n1==1){
@@ -169,6 +169,36 @@ public class Artists {
         System.out.println("Artist's Last Name: " + artLName);
         System.out.println("Artist's Email: " + artEmail);
         System.out.println("Artist's Style: " + artStyle);
+    }
+    
+    public boolean checkID(String aID) {
+        boolean idExists = false; 
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver"); 
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+
+            Statement stmt = con.createStatement();
+
+            // SQL query to check if a artist exists with the provided aID
+            String sql = "SELECT COUNT(*) FROM Artists WHERE employeeID = '" + aID + "'";
+
+            // Execute the query and get the result
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // if the record is found sets count to 1
+            if (rs.next() && rs.getInt(1) > 0) {
+                idExists = true;  // sets exists to true and stops the admin from inserting into DB
+            }
+
+            // Close the connection
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    
+        return idExists;  // return true if the aID exists, false otherwise
     }
     
     

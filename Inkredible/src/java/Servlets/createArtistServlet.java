@@ -20,12 +20,12 @@ public class createArtistServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
-        String naid = request.getParameter("datb");
-        String napw = request.getParameter("dptb");
-        String nafn = request.getParameter("dftb");
-        String naln = request.getParameter("dltb");
-        String naem = request.getParameter("detb");
-        String nasy = request.getParameter("ditb");
+        String naid = request.getParameter("naID");
+        String napw = request.getParameter("naPW");
+        String nafn = request.getParameter("naFN");
+        String naln = request.getParameter("naLN");
+        String naem = request.getParameter("naEM");
+        String nasy = request.getParameter("naSY");
         
         System.out.println("id: " + naid);
         System.out.println("pw:  " + napw);
@@ -38,23 +38,29 @@ public class createArtistServlet extends HttpServlet {
         
         
         Artists newArtist = new Artists();
-        newArtist.setAID(naid);
-        // Code to update the patient in the database
-//        updatedPatient.setPID(upid);
-        newArtist.setAPW(napw);
-        newArtist.setAFN(nafn);
-        newArtist.setALN(naln);
-        newArtist.setAEM(naem);
-        newArtist.setASY(nasy);
-        newArtist.insertDB(naid, napw, nafn, naln, naem, nasy);
+        boolean idExists = newArtist.checkID(naid);
         
-        response.sendRedirect("customerEditAccount.jsp");
+        if (idExists) {
+            // If the customer ID already exists, notify the user and stop the process
+            response.sendRedirect("artistIDExists.jsp"); // this will be the warning that the id aleady exists and they need to make a new one
+        } 
+        else {
+            newArtist.setAID(naid);
+            newArtist.setAPW(napw);
+            newArtist.setAFN(nafn);
+            newArtist.setALN(naln);
+            newArtist.setAEM(naem);
+            newArtist.setASY(nasy);
+            newArtist.insertDB(naid, napw, nafn, naln, naem, nasy);
+
+            response.sendRedirect("artistHomePage.jsp");
+        }
         } //end of try
         catch(Exception e){
             System.out.println(e);
         }
         finally {
-            System.out.println("UpdatePatientServlet ending...");
+            System.out.println("ID check servlet ending...");
             out.close();
         }//end finally
     }// end process req

@@ -123,20 +123,24 @@ public class Customers {
         }
     }
     
-    public void insertDB(String cpw, String cfn, String cln, String cem){
-//        setCID(cid);
+    public void insertDB(String cid, String cpw, String cfn, String cln, String cem){
+        
         setCPW(cpw);
         setCFN(cfn);
         setCLN(cln);
         setCEM(cem);
+        
+        String newCustID;
+        
         
         
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
-            Statement stmt = con.createStatement(); // + getCID() + "'," + "'" 
-            String sql = "Insert into Customers values('" + getCPW() + "'," + "'" + getCFN() + "'," + "'" + getCLN() +  "'," + "'" + getCEM() + "')"; 
+            Statement stmt = con.createStatement();   
+           
+            String sql = "Insert into Customers values('" + getCLN() + "'," + "'" + getCEM() + "'," + "'" + getCPW() + "'," + "'" + getCID() +  "'," + "'" + getCFN() + "')"; 
             System.out.println(sql);
             int n1 = stmt.executeUpdate(sql);
             if (n1==1){
@@ -162,6 +166,38 @@ public class Customers {
         System.out.println("Customer's Email: " + custEmail);
     }
     
+    public boolean checkID(String cID) {
+        boolean idExists = false;
+        try {
+            // Load the database driver
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver"); 
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+
+            // Create a statement to execute the query
+            Statement stmt = con.createStatement();
+
+            // SQL query to check if a customer exists with the provided cID
+            String sql = "SELECT COUNT(*) FROM Customers WHERE customerID = '" + cID + "'";
+
+            // Execute the query and get the result
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // if the record is found sets count to 1
+            if (rs.next() && rs.getInt(1) > 0) {
+                idExists = true;  // sets exists to true and stops the customer from inserting into DB
+            }
+
+            // Close the connection
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    
+        return idExists;  // Return true if the customer ID exists, false otherwise
+    }
+    
    //Used for testing
     public static void main(String[]args){
         // update test
@@ -174,7 +210,7 @@ public class Customers {
     
         //insert and auto id allocation test
         Customers c2 = new Customers();
-        c2.insertDB("5555", "chris", "Martin", "c@scho");
+        c2.insertDB("A665", "5555", "chris", "Martin", "c@scho");
         c2.display();
     }
     
