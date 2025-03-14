@@ -1,25 +1,27 @@
 /*
- * The servlet we will use when a Customer wants to login. 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Servlets;
 import Business.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author tston
  */
-@WebServlet(name = "CustomerLogin", urlPatterns = {"/CustomerLogin"})
-public class CustomerLogin extends HttpServlet {
+@WebServlet(name = "CustomerHome", urlPatterns = {"/CustomerHome"})
+public class CustomerHome extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,43 +37,45 @@ public class CustomerLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String custID, custPass;
-        custID = request.getParameter("cID"); //depends on ID in JSP page, may change from cID
-        System.out.println("This woulld be the customer ID: " + custID);
-        custPass = request.getParameter("pass"); //depends on ID in JSP page, may change from pass
-        System.out.println("This would be the customer Password: " + custPass);
+        String cID, cPass, cFirst, cLast, cEmail;
+        String aCID, aTime;
+        
+        cID = request.getParameter("");
+        cPass = request.getParameter("");
+        cFirst = request.getParameter("");
+        cLast = request.getParameter("");
+        cEmail = request.getParameter("");
+        System.out.println(cID);
+        
+        
+        aCID = request.getParameter("");
+        aTime = request.getParameter("");
+        System.out.println(aCID);
         
         try{
-            Customers c1 = new Customers(); //creates the customer object
-            c1.selectDB(custID); //Selects the account info from database with the user input ID which was grabbed earlier 
-            String pwdb = c1.getCPW(); //Gets the password of the user
-            String iddb = c1.getCID(); // gets the ID of the user
+            Customers c1 = new Customers();
+            c1.selectDB(cID);
+            c1.setCPW(cPass);
+            c1.setCFN(cFirst);
+            c1.setCLN(cLast);
+            c1.setCEM(cEmail);
+            c1.updateDB();
             
-            Appointments a1 = new Appointments(); // creates the appointmetn object 
-            a1.selectCustDB(custID);  //selects the appointment based on customer ID
+            Appointments a1 = new Appointments();
+            a1.selectCustDB(aCID);
+            a1.setADT(aTime);
+            a1.updateDB();
             
-            HttpSession ses1;
-            ses1 = request.getSession();  // creating session 
-            ses1.setAttribute("c1", c1); //Telling the sesion what the attribute is for the customer class
-            ses1.setAttribute("a1", a1); //Telling the session what the attribute is for the Appointments class 
-            System.out.println("Customer added to session");
-            
-            if(custPass.equals(pwdb) && custID.equals(iddb)){  // verifying login info which includes ID and password 
-                System.out.println("Hello1");
-                RequestDispatcher rd = request.getRequestDispatcher("customerHomePage.jsp"); //Temp name "CustomerHomePage.jsp" may change
-                rd.forward(request,response);
-                System.out.println("Hello2");
-            }
-            else{
-                RequestDispatcher rd = request.getRequestDispatcher("artists.jsp"); //Temp name "LoginError.jsp" may change
-                rd.forward(request,response);
-            }
-            
+            //RequestDispatcher rd = request.getRequestDispatcher("ChangeSuccess.jsp");
+            //rd.forward(request, response);
         }
         catch(Exception e){
             System.out.println(e);
         }
         
+        
+        
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
