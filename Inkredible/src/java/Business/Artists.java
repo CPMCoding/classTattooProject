@@ -22,6 +22,10 @@ public class Artists {
         artEmail = "";
         artStyle = "";
     }
+    
+    public Artists(String aid){
+        artID = aid;
+    }
 
     public Artists(String aid, String apw, String afn, String aln, String aem, String asy){
         artID = aid;
@@ -201,15 +205,58 @@ public class Artists {
         return idExists;  // return true if the aID exists, false otherwise
     }
     
+    public void selectAllDB() {
+        ArrayList<Artists> artists = new ArrayList<>();
+        try {
+            // Load the database driver (UCanAccess for MS Access)
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            // Provide the correct path to your database file in getConnection() below
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+
+            // Create a statement to execute the SQL query
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM Artists";
+            System.out.println(sql); // This will print the query you're executing
+
+            // Execute the query and get the result set
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Loop through the result set and store each row into the ArrayList
+            while (rs.next()) {
+                // Assuming columns are: 1 = First Name, 2 = Last Name, 6 = Artist ID
+                String artID = rs.getString(6);
+
+                // Create a new Artist object and add it to the ArrayList
+                Artists artist = new Artists(artID);
+                artists.add(artist);
+            }
+
+            // Optionally, print out all the artists
+            for (Artists artist : artists) {
+                System.out.println("Artist ID: " + artist.artID);
+            }
+
+            // Close the connection
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     
     //Used for testing
     public static void main(String[] args){
-        Artists a1 = new Artists();
-        a1.selectDB("A320");
-        a1.setAFN("Alex");
-        a1.setAEM("aj2@gmail.com");
-        a1.updateDB();
-        a1.display();
+//        Artists a1 = new Artists();
+//        a1.selectDB("A320");
+//        a1.setAFN("Alex");
+//        a1.setAEM("aj2@gmail.com");
+//        a1.updateDB();
+//        a1.display();
+
+//        Artists a2 = new Artists();
+//        a2.selectAllDB();
         
     }
 }
