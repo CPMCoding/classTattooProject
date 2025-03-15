@@ -2,6 +2,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Business.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +101,19 @@
     </style>
 </head>
 <body>
+    
+        <%
+        Customers c1;
+        Appointments a1 = new Appointments();
+        
+        c1 = (Customers) session.getAttribute("c1");
+        a1 = (Appointments) session.getAttribute("a1");
+        
+        String custID = c1.getCID();
+        a1.selectCustDB(custID);
+    
+        %>
+    
     <div class="sidebar">
         <div class="logo">
             <img src="logo.png" alt="Logo">
@@ -126,8 +140,74 @@
 
     <div class="content">
         <div class="text">
-            <h1>Artists</h1>
-            <p>Meet our talented tattoo artists who bring your visions to life with their expertise and creativity.</p>
+            <h1>Account Information</h1>
+            <table border ="1">
+            
+            <tr>
+                <th>Customer ID</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            
+            <tr>
+                <td><%= c1.getCID()%></td>
+                <td><%= c1.getCPW()%></td>
+                <td><%= c1.getCFN()%></td>
+                <td><%= c1.getCLN()%></td>
+                <td><%= c1.getCEM()%></td>
+            </tr>
+            
+            </table>
+            
+            <br>
+            <br>
+            
+            
+            <h2>Update account information</h2>
+            
+            <form action="CustomerHome" method="post">
+                <input type="text" name="pass" id = "pass" class="input-field" placeholder="Password">
+                <input type="text" name="cFN" id = "cFN" class="input-field" placeholder="First Name">
+                <input type="text" name="cLN" id = "cLN" class="input-field" placeholder="Last Name">
+                <input type="text" name="cEM" id = "cEM" class="input-field" placeholder="Email">
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <br>
+            <br>
+            
+            <h2>Appointment information</h2>
+            
+            <table border ="1">
+            
+            <tr>
+                <th>Appointment Date & Time</th>
+                <th>Customer ID</th>
+                <th>Artist ID</th>
+                <th>Total Cost</th>
+            </tr>
+            
+            <tr>
+                <td><%= a1.getADT()%></td>
+                <td><%= a1.getCID()%></td>
+                <td><%= a1.getAID()%></td>
+                <td><%= a1.getTCST()%></td>
+            </tr>
+            
+            </table>
+            
+            <br>
+            <br>
+            
+            <h2>Update Appointment Time</h2>
+            
+            <form action="CustomerHome" method="post">
+                <input type="text" name="cID" id = "cID" class="input-field" placeholder="Username">
+                <input type="text" name="aDT" id = "aDT" class="input-field" placeholder="Appointment Time">
+                <button type="submit" class="login-btn">Login</button>
+            </form>
         </div>
     </div>
 

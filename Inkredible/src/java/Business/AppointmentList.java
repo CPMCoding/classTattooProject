@@ -26,6 +26,6 @@ public class AppointmentList {
     }
     
     public static void main(String[] args){
-        
+        AppointmentList aList = new AppointmentList();
     }
 }

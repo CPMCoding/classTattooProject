@@ -2,6 +2,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Business.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +101,21 @@
     </style>
 </head>
 <body>
+    
+        <%
+        Artists a1;
+        
+        a1 = (Artists) session.getAttribute("a1");
+        
+        AppointmentList appointmentList = a1.aList; 
+        Appointments[] appointment = appointmentList.accArr;
+        System.out.println("Displaying appointment info");
+        a1.display1();
+        
+        Appointments aP1;
+    
+        %>
+    
     <div class="sidebar">
         <div class="logo">
             <img src="logo.png" alt="Logo">
@@ -126,8 +142,40 @@
 
     <div class="content">
         <div class="text">
-            <h1>Artists</h1>
-            <p>Meet our talented tattoo artists who bring your visions to life with their expertise and creativity.</p>
+            <h1>Customer & Appointment Info</h1>
+            <table border ="1">
+            
+            <tr>
+                <th>Appointment Date & Time</th>
+                <th>Customer ID</th>
+                <th>Artist ID</th>
+                <th>Total Cost</th>
+            </tr>
+            
+            <%
+                for(int i = 0; i < a1.aList.count; i++){
+                    aP1 = appointment[i];
+                    
+                    System.out.println("Getting an Account");
+                    aP1.display();
+                
+            
+            %>
+            
+            
+            <tr>
+                <td><%= aP1.getADT()%></td>
+                <td><%= aP1.getCID()%></td>
+                <td><%= aP1.getAID()%></td>
+                <td><%= aP1.getTCST()%></td>
+            </tr>
+            
+            <%
+            
+                }
+            %>
+            
+            </table>
         </div>
     </div>
 
