@@ -13,7 +13,6 @@ public class Artists {
     private String artLName;
     private String artEmail;
     private String artStyle;
-    public AppointmentList aList = new AppointmentList();
 
     public Artists(){
         artID = "";
@@ -244,46 +243,6 @@ public class Artists {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-    
-    
-    //Being used for Artist Homepage; Will grab all appointments the artist has
-    public void getAppointments(){
-        try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
-            
-            Statement stmt = con.createStatement();
-            String sql = "Select customerID from Appointments where employeeID = '" + artID + "'";
-            System.out.println(sql);
-            ResultSet rs = stmt.executeQuery(sql);
-            String an;
-            Appointments a1;
-            while(rs.next()){
-                an = rs.getString(1);
-                a1 = new Appointments();
-                a1.selectCustDB(an);
-                aList.addAppointment(a1);
-            }
-            
-            con.close();
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-    
-    
-    //Being used for Artist Homepage
-    public void display1(){
-        System.out.println("Artist's ID: " + artID);
-        System.out.println("Artist's Password: " + artPass);
-        System.out.println("Artist's First Name: " + artFName);
-        System.out.println("Artist's Last Name: " + artLName);
-        System.out.println("Artist's Email: " + artEmail);
-        System.out.println("Artist's Style: " + artStyle);
-        
-        aList.displayList();
     }
     
     

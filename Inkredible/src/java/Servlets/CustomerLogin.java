@@ -58,7 +58,7 @@ public class CustomerLogin extends HttpServlet {
             
             if(custPass.equals(pwdb) && custID.equals(iddb)){  // verifying login info which includes ID and password 
                 System.out.println("Hello1");
-                RequestDispatcher rd = request.getRequestDispatcher("customerHomePage.jsp"); //Temp name "CustomerHomePage.jsp" may change
+                RequestDispatcher rd = request.getRequestDispatcher("design.jsp"); //Temp name "CustomerHomePage.jsp" may change
                 rd.forward(request,response);
                 System.out.println("Hello2");
             }
