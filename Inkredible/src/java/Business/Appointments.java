@@ -1,6 +1,7 @@
 /*
  * This will be our Appointments object for Inkredible. 
  */
+
 package Business;
 import java.sql.*;
 import java.util.ArrayList;

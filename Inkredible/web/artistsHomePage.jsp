@@ -1,5 +1,6 @@
 <!ARTIST HOME PAGE. USING ARTIST.JSP AS A BASE>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

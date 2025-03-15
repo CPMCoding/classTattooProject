@@ -2,6 +2,7 @@
  *   This will be our customer object for Inkcredible. 
  * 
  */
+
 package Business;
 import java.sql.*;
 import java.util.ArrayList;
