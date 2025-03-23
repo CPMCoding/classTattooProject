@@ -3,6 +3,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@page import="Business.*"%>
+<%@ page import="Business.Artists"%>
+<%@ page import="Business.Schedule"%>
+<%@ page import="Business.ScheduleList"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,8 +141,8 @@
     </div>
     
     <h3>New Employee Registration</h3>
-                <form action="createArtistServlet" method="post">  
-                    <p>Username</p>
+        <form action="createArtistServlet" method="post">  
+            <p>Username</p>
             <input type="text" name="naID" id = "naID" class="input-field" placeholder="Username" required>
             <p>Password</p>
             <input type="password" name="naPW" id = "naPW" class="input-field" placeholder="Password" required>
@@ -151,37 +155,69 @@
             <p>Style</p>
                <input type="Text" name="naSY" id = "ncSY" class="input-field" placeholder="Style" required>
             <button type="submit" class="login-btn">Create</button>
-    
+            <button type="reset" value="Clear"> </button>
+        </form>
+    <jsp:useBean id="s1" scope="session" class="Business.Schedule"/>
+    <h3>This is the current schedule</h3>
+                    <tr>
+                        <td>Username: </td>
+                        <td><%= s1.getSArtID() %></td>
+                    </tr>
+                    <tr>
+                        <td>Monday: </td>
+                        <td><%= s1.getMON() %></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday: </td>
+                        <td><%= s1.getTUES() %></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday: </td>
+                        <td><%= s1.getWED() %></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday: </td>
+                        <td><%= s1.getTHUR() %></td>
+                    </tr>
+                    <tr>
+                        <td>Friday: </td>
+                        <td><%= s1.getFRI() %></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday: </td>
+                        <td><%= s1.getSAT() %></td>
+                    </tr>
+                    <tr>
+                        <td>Sunday: </td>
+                        <td><%= s1.getSUN() %></td>
+                    </tr>
+    <h3>Employee Schedule Search</h3>
+        <form action="searchScheduleServlet" method="post">  
+            <p>Username</p>
+            <input type="text" name="usID" id = "usID" class="input-field" placeholder="Username" required>
+            <p>Monday</p>
+            <input type="password" name="usMON" id = "usMON" class="input-field" placeholder="True/False">
+            <p>Tuesday</p>
+            <input type="text" name="usTUES" id = "usTUES" class="input-field" placeholder="True/False">
+            <p>Wednesday</p>
+            <input type="text" name="usWED" id = "usWED" class="input-field" placeholder="True/False">
+            <p>Thursday</p>
+               <input type="Email" name="usTHUR" id = "usTHUR" class="input-field" placeholder="True/False">
+            <p>Friday</p>
+               <input type="Text" name="usFRI" id = "usFRI" class="input-field" placeholder="True/False">
+            <p>Saturday</p>
+               <input type="Text" name="usSAT" id = "usSAT" class="input-field" placeholder="True/False">
+            <p>Sunday</p>
+               <input type="Text" name="usSUN" id = "usSUN" class="input-field" placeholder="True/False">
+            <button type="search" class="login-btn">Search</button> 
             
-    <%
-            // Class declaration
-            class ScheduleEntry {
-                String day, hours;
-                ScheduleEntry(String day, String hours) {
-                    this.day = day;
-                    this.hours = hours;
-                }
-            }
-
-            // Initialize the schedule list
-            List<ScheduleEntry> schedule = new ArrayList<ScheduleEntry>();
-
-            schedule.add(new ScheduleEntry("Monday", "10:00 AM - 8:00 PM"));
-            schedule.add(new ScheduleEntry("Tuesday", "10:00 AM - 8:00 PM"));
-            schedule.add(new ScheduleEntry("Wednesday", "10:00 AM - 8:00 PM"));
-            schedule.add(new ScheduleEntry("Thursday", "10:00 AM - 8:00 PM"));
-            schedule.add(new ScheduleEntry("Friday", "10:00 AM - 10:00 PM"));
-            schedule.add(new ScheduleEntry("Saturday", "12:00 PM - 10:00 PM"));
-            schedule.add(new ScheduleEntry("Sunday", "Closed"));
-
-            // Iterate through the list and display entries
-            for (ScheduleEntry entry : schedule) {
-        %>
-        <tr>
-            <td><%= entry.day %></td>
-            <td><%= entry.hours %></td>
-        </tr>
-        <% } %>
+            <button type="reset" value="Clear">Clear</button>
+        </form>
+        <form action="updateServlet">
+            <button type="submit" class="login-btn">Update</button>
+        </form>
+    
 </body>
 </html>
 <!ADMIN HOME PAGE. USING ARTIST.JSP AS A BASE>
+<!Search button needs ot be fixed to where it seearches update needs to be tested>
