@@ -120,7 +120,7 @@
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
-            <a href="home.jsp">
+            <a href="index.html">
                 <img src="menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">
@@ -134,6 +134,9 @@
             </a>
             <a href="reviews.jsp">
                 <img src="menuReviews.png" alt="Reviews" title="Reviews">
+            </a>
+            <a href="customerAccountDetails.jsp">
+                <img src="customerAccountDetails.png" alt="Account Details" title="Account Details">
             </a>
         </nav>
     </div>

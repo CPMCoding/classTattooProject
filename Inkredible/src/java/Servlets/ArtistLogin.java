@@ -67,7 +67,7 @@ public class ArtistLogin extends HttpServlet {
             }
             
             else if (pw.equals(adpwdb)  && id.equals(adiddb)) {
-                RequestDispatcher rd = request.getRequestDispatcher("/index.html"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
+                RequestDispatcher rd = request.getRequestDispatcher("/adminHomePage.jsp"); //this is where the servlet will send to when the employee signs in correctly. PAGE MAY CHANGE
                 rd.forward(request, response);
             }
             
