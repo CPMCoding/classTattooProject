@@ -102,6 +102,15 @@
 </head>
 <body>
     
+    <div class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="title">INKREDIBLE</div>
+        <nav class="nav">
+            
+        </nav>
+    
         <%
         Artists a1;
         
@@ -122,6 +131,12 @@
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
+            <a href="artistsHomePage.jsp">
+                <img src="artistHomePage.png" alt="Artist Home Page" title="Artist Home Page">
+            </a>
+            <a href="artistAccountDetails.jsp">
+                <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
+            </a>
             <a href="home.jsp">
                 <img src="menuHome.png" alt="Home" title="Home">
             </a>
