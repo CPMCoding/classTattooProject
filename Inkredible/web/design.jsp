@@ -195,9 +195,9 @@
         <!-- Design Slot 2 -->
         <div class="design-slot">
             <div class="slide-container">
-                <img class="slides" src="images/traditional1.jpg" alt="Traditional Tattoo 1">
-                <img class="slides" src="images/traditional2.jpg" alt="Traditional Tattoo 2">
-                <img class="slides" src="images/traditional3.jpg" alt="Traditional Tattoo 3">
+                <img class="slides" src="img/traditonal1.jpg" alt="Traditional Tattoo 1">
+                <img class="slides" src="img/traditional2.jpg" alt="Traditional Tattoo 2">
+                <img class="slides" src="img/traditional3.jpg" alt="Traditional Tattoo 3">
                 <button class="prev" onclick="moveSlide(-1, 1)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1, 1)">&#10095;</button>
             </div>
@@ -209,9 +209,9 @@
         <!-- Design Slot 3 -->
         <div class="design-slot">
             <div class="slide-container">
-                <img class="slides" src="images/watercolor1.jpg" alt="Watercolor Tattoo 1">
-                <img class="slides" src="images/watercolor2.jpg" alt="Watercolor Tattoo 2">
-                <img class="slides" src="images/watercolor3.jpg" alt="Watercolor Tattoo 3">
+                <img class="slides" src="img/watercolor1.jpg" alt="Watercolor Tattoo 1">
+                <img class="slides" src="img/watercolor2.jpg" alt="Watercolor Tattoo 2">
+                <img class="slides" src="img/watercolor3.jpg" alt="Watercolor Tattoo 3">
                 <button class="prev" onclick="moveSlide(-1, 2)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1, 2)">&#10095;</button>
             </div>
@@ -223,9 +223,9 @@
         <!-- Design Slot 4 -->
         <div class="design-slot">
             <div class="slide-container">
-                <img class="slides" src="images/geometric1.jpg" alt="Geometric Tattoo 1">
-                <img class="slides" src="images/geometric2.jpg" alt="Geometric Tattoo 2">
-                <img class="slides" src="images/geometric3.jpg" alt="Geometric Tattoo 3">
+                <img class="slides" src="img/geo1.jpg" alt="Geometric Tattoo 1">
+                <img class="slides" src="img/geo2.jpg" alt="Geometric Tattoo 2">
+                <img class="slides" src="img/geo3.jpg" alt="Geometric Tattoo 3">
                 <button class="prev" onclick="moveSlide(-1, 3)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1, 3)">&#10095;</button>
             </div>
@@ -237,9 +237,9 @@
         <!-- Design Slot 5 -->
         <div class="design-slot">
             <div class="slide-container">
-                <img class="slides" src="images/minimalist1.jpg" alt="Minimalist Tattoo 1">
-                <img class="slides" src="images/minimalist2.jpg" alt="Minimalist Tattoo 2">
-                <img class="slides" src="images/minimalist3.jpg" alt="Minimalist Tattoo 3">
+                <img class="slides" src="img/min1.png" alt="Minimalist Tattoo 1">
+                <img class="slides" src="img/min2.jpg" alt="Minimalist Tattoo 2">
+                <img class="slides" src="img/min3.jpg" alt="Minimalist Tattoo 3">
                 <button class="prev" onclick="moveSlide(-1, 4)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1, 4)">&#10095;</button>
             </div>
