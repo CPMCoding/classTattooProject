@@ -1,0 +1,22 @@
+
+
+#columns {
+    width: 100%;
+    border: none;
+	spacing:10px;
+	padding:10px;
+}
+#leftcol {
+    width: 51%;
+    border: none;
+	float: left;
+}
+#rightcol {
+	width: 49%;
+    border: none;
+	float: right;
+}
+@media (max-width: 600px) {
+   #leftcol { float: none; }
+   #rightcol { float: none; }
+}
