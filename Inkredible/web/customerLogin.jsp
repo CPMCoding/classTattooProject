@@ -84,9 +84,12 @@
         }
 
         .Sign-up {
-            color: red;
+            color: pink;
             font-size: 14px;
             margin-top: 10px;
+            a:visited {
+            color: pink;
+
         }
     </style>
 </head>
