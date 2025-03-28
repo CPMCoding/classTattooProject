@@ -40,8 +40,13 @@ public class createArtistServlet extends HttpServlet {
         boolean idExists = newArtist.checkID(naid);
         
         if (idExists) {
-            // If the customer ID already exists, notify the user and stop the process
-            response.sendRedirect("artistIDExists.jsp"); // this will be the warning that the id aleady exists and they need to make a new one
+            // This works by sending the strings into a responce stream that reads it as normal html code
+            out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+            out.println("<script type='text/javascript'>");// looks like this alery
+            out.println("alert('Username is already taken!');");// in this case just an alert with nothing in the body
+            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+            out.println("</script>");//the rest is to just close the remaining html page
+            out.println("</body></html>"); 
         } 
         else {
             newArtist.setAID(naid);
@@ -52,7 +57,13 @@ public class createArtistServlet extends HttpServlet {
             newArtist.setASY(nasy);
             newArtist.insertDB(naid, napw, nafn, naln, naem, nasy);
 
-            response.sendRedirect("artistHomePage.jsp");
+            // This works by sending the strings into a responce stream that reads it as normal html code
+            out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+            out.println("<script type='text/javascript'>");// looks like this alery
+            out.println("alert('NEW ARTIST CREATED!');");// in this case just an alert with nothing in the body
+            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+            out.println("</script>");//the rest is to just close the remaining html page
+            out.println("</body></html>"); 
         }
         } //end of try
         catch(Exception e){

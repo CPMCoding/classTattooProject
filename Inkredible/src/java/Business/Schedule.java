@@ -37,6 +37,9 @@ public class Schedule {
         
     }
     
+    public Schedule(String aid){
+        schArtID = aid;
+    }
     
     public Schedule(String aid, String Mon, String Tues, String Wed, String Thur, String Fri, String Sat, String Sun){
         
@@ -117,10 +120,10 @@ public class Schedule {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            Connection con = DriverManager.getConnection("");
             
             Statement stmt = con.createStatement();
-            String sql = "Select * from Schedule where employeeID = '" + aID + "'";
+            String sql = "Select * from Schedule where EmployeeID = '" + aID + "'";
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
@@ -133,6 +136,7 @@ public class Schedule {
             worksSaturday = rs.getString(6);
             worksSunday = rs.getString(7);
             
+            System.out.println("Schedule selectDB completed");
             con.close();
             
             

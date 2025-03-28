@@ -20,7 +20,7 @@ public class updateSchedule extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
+            System.out.println("Inside try ");
             String usID = request.getParameter("usID");
             String usMON = request.getParameter("usMON");
             String usTUES = request.getParameter("usTUES");
@@ -29,7 +29,9 @@ public class updateSchedule extends HttpServlet {
             String usFRI = request.getParameter("usFRI");
             String usSAT = request.getParameter("usSAT");
             String usSUN = request.getParameter("usSUN");
-
+            
+            System.out.println("Get parameters Complete ");
+            
             System.out.println("id: " + usID);
             System.out.println("mon: " + usMON);
             System.out.println("tues: " + usTUES);
@@ -38,9 +40,9 @@ public class updateSchedule extends HttpServlet {
             System.out.println("fri: " + usFRI);
             System.out.println("sat: " + usSAT);
             System.out.println("sun: " + usSUN);
-
+            
             HttpSession ses1;
-
+            System.out.println("Session started ");
 
             Schedule updatedSchedule = new Schedule();
             updatedSchedule.selectDB(usID);
@@ -52,7 +54,7 @@ public class updateSchedule extends HttpServlet {
             updatedSchedule.setSAT(usSAT);
             updatedSchedule.setSUN(usSUN);
             updatedSchedule.updateDB();
-            
+            System.out.println("Updated schedule complete ");
             
         }
         catch(Exception e){
