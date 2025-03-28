@@ -9,20 +9,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/searchArtist")
+@WebServlet(name = "searchScheduleServlet", urlPatterns = {"/searchScheduleServlet"})
 public class searchScheduleServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
-        String aID = request.getParameter("uaID");
-
+        String aID = request.getParameter("usID");
+        System.out.println("getting usID");
         // Call method to search for the employee by username
         Schedule searchSchedule = new Schedule();
-
-        if (searchSchedule != null) {
-            request.setAttribute("usID", searchSchedule.getSArtID());
+        System.out.println("Creating schedule");
+        searchSchedule.selectDB(aID);
+        HttpSession ses1;
+        ses1 = request.getSession();  // creating session 
+        ses1.setAttribute("searchSchedule", searchSchedule);
+        System.out.println("searchSchedule added to session");
+        if (aID != null) {
+            System.out.println("Inside if statement");
+            searchSchedule.selectDB(aID);
             request.setAttribute("usMON", searchSchedule.getMON());
             request.setAttribute("usTUES", searchSchedule.getTUES());
             request.setAttribute("usWED", searchSchedule.getWED());
@@ -30,9 +38,20 @@ public class searchScheduleServlet extends HttpServlet {
             request.setAttribute("usFRI", searchSchedule.getFRI());
             request.setAttribute("usSAT", searchSchedule.getSAT());
             request.setAttribute("usSUN", searchSchedule.getSUN());
-
+            System.out.println("usID " + aID);
+            System.out.println("usMON " + searchSchedule.getMON());
+            System.out.println("usTUES ");
+            System.out.println("usWED ");
+            System.out.println("usTHUR ");
+            System.out.println("usFRI ");
+            System.out.println("usSAT ");
+            System.out.println("usSUN ");
+            ses1.setAttribute("searchSchedule", searchSchedule);
+            System.out.println("searchSchedule added to session");
             request.getRequestDispatcher("/adminHomePage.jsp").forward(request, response);
+            System.out.println("Request disppatcher");
         } else {
+            System.out.println("Inside else statement");
             response.getWriter().write("Employee not found!");
         }
     }

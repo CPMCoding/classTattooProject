@@ -1,6 +1,4 @@
-/*
- * The servlet we will use when an Admin wants to login. 
- */
+////////// NOT IN USE/////////////////////////
 package Servlets;
 
 import java.io.IOException;
@@ -10,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+////////// NOT IN USE/////////////////////////
 
 @WebServlet(name = "AdminLogin", urlPatterns = {"/AdminLogin"})
 public class AdminLogin extends HttpServlet {
@@ -81,3 +79,4 @@ public class AdminLogin extends HttpServlet {
     }// </editor-fold>
 
 }
+////////// NOT IN USE/////////////////////////
