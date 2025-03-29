@@ -49,7 +49,11 @@
             font-size: 24px;
             font-weight: 600;
         }
-
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
         .input-field {
             width: 100%;
             padding: 12px;

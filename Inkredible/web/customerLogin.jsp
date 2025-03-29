@@ -51,7 +51,11 @@
         .home-btn:hover {
             background-color: #2980b9;
         }
-
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
         .input-field {
             width: 100%;
             padding: 12px;
