@@ -40,9 +40,6 @@ public class updateSchedule extends HttpServlet {
             System.out.println("fri: " + usFRI);
             System.out.println("sat: " + usSAT);
             System.out.println("sun: " + usSUN);
-            
-            HttpSession ses1;
-            System.out.println("Session started ");
 
             Schedule updatedSchedule = new Schedule();
             updatedSchedule.selectDB(usID);
@@ -55,6 +52,13 @@ public class updateSchedule extends HttpServlet {
             updatedSchedule.setSUN(usSUN);
             updatedSchedule.updateDB();
             System.out.println("Updated schedule complete ");
+            
+            out.println("<html><body>"); 
+            out.println("<script type='text/javascript'>");// looks like this alery
+            out.println("alert('Schedule UPDATED!');");// in this case just an alert with nothing in the body
+            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+            out.println("</script>");//the rest is to just close the remaining html page
+            out.println("</body></html>");  
             
         }
         catch(Exception e){

@@ -180,7 +180,7 @@
         <form action="createArtistServlet" method="post">  
             <h3>New Employee Registration</h3>
             <p>Username</p>
-            <input type="text" name= "naID" id="naID" class= "input-field" placeholder= "Username" required>
+            <input type="text" name= "naID" id= "naID" class= "input-field" placeholder= "Username" required>
             <p>Password</p>
             <input type="password" name= "naPW" id= "naPW" class= "input-field" placeholder= "Password" required>
             <p>First Name</p>
@@ -188,7 +188,7 @@
             <p>Last Name</p>
             <input type="text" name= "naLN" id= "naLN" class= "input-field" placeholder= "Last Name" required>
             <p>Email</p>
-            <input type="email" name= "naEM" id= " naEM" class= input-field" placeholder= "Email" required>
+            <input type="email" name= "naEM" id= "naEM" class= "input-field" placeholder= "Email" required>
             <p>Style</p>
             <input type="text" name= "naSY" id= "naSY" class= "input-field" placeholder= "Style" required>
             <button type="submit" class="login-btn">Create</button>

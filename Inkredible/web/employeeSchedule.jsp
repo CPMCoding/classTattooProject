@@ -121,6 +121,7 @@
         <img src="background3.png" alt="Background" title="Background">
     </div>
     <jsp:useBean id="s1" scope="session" class="Business.Schedule"/>
+    <% System.out.println("session created s1: " + s1.getSArtID() ); %>
     <h3>This is the current schedule</h3>
                     <tr>
                         <td>Username: </td>
@@ -155,46 +156,27 @@
                         <td><%= s1.getSUN() %></td>
                     </tr>
     <h3>Employee Schedule Search</h3>
-        <form id="edit" action="updateSchedule">
-            <table border="3">
-                <thead>Use the form below to change the employees schedule: </thead>
-                <tr>
-                    <td>Username: </td>
-                    <td><input type="text" name="usID" value="<jsp:getProperty name="s1" property="SArtID" />" placeholder="Username..." </td>
-                </tr>
-                <tr>
-                    <td>Monday: </td>
-                    <td><input type="text" name="usMON" value="<jsp:setProperty name="s1" property="MON" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Tuesday: </td>
-                    <td><input type="text" name="usTUES" value="<jsp:setProperty name="s1" property="TUES" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Wednesday: </td>
-                    <td><input type="text" name="usWED" value="<jsp:setProperty name="s1" property="WED" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Thursday: </td>
-                    <td><input type="text" name="usTHUR" value="<jsp:setProperty name="s1" property="THUR" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Friday: </td>
-                    <td><input type="text" name="usFRI" value="<jsp:setProperty name="s1" property="FRI" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Saturday: </td>
-                    <td><input type="text" name="usSAT" value="<jsp:setProperty name="s1" property="SAT" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td>Sunday: </td>
-                    <td><input type="text" name="usSUN" value="<jsp:setProperty name="s1" property="SUN" />" placeholder="True/False" </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit" /></td>
-                    <td><input type="reset" value="Clear" /></td>
-                </tr>
-            </table>
+        <form action="updateSchedule" method="post">  
+            <h3>Change Employee Schedule</h3>
+            <p>Username</p>
+            <input type="text" name= "usID" id= "usID" class= "input-field" placeholder= "Username" required>
+            <p>Monday</p>
+            <input type="text" name= "usMON" id= "usMON" class= "input-field" placeholder= "True/False" required>
+            <p>Tuesday</p>
+            <input type="text" name= "usTUES" id= "usTUES" class= "input-field" placeholder= "True/False" required>
+            <p>Wednesday</p>
+            <input type="text" name= "usWED" id= "usWED" class= "input-field" placeholder= "True/False" required>
+            <p>Thursday</p>
+            <input type="text" name= "usTHUR" id= "usTHUR" class= "input-field" placeholder= "True/False" required>
+            <p>Friday</p>
+            <input type="text" name= "usFRI" id= "usFRI" class= "input-field" placeholder= "True/False" required>
+            <p>Saturday</p>
+            <input type="text" name= "usSAT" id= "usSAT" class= "input-field" placeholder= "True/False" required>
+            <p>Sunday</p>
+            <input type="text" name= "usSUN" id= "usSUN" class= "input-field" placeholder= "True/False" required>
+            
+            <button type="submit" class="login-btn">Update</button>
+            <button type="reset" class="login-btn">Clear</button>
         </form>
     
 </body>

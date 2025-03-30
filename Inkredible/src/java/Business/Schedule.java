@@ -120,7 +120,7 @@ public class Schedule {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
-            Connection con = DriverManager.getConnection("");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
             String sql = "Select * from Schedule where EmployeeID = '" + aID + "'";
@@ -226,7 +226,7 @@ public class Schedule {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
-            String sql = "Update Schedule Set Monday = '" + worksMonday + "', Tuesday = '" + worksTuesday + "', Wednesday = '" + worksWednesday + "', Thursday = '" + worksThursday + "', Friday = '" + worksFriday + "', Saturday = '" + worksSaturday + "', Sunday = '" + worksSunday + "' Where employeeID = '" + a1.getAID() + "'";
+            String sql = "Update Schedule Set Monday = '" + worksMonday + "', Tuesday = '" + worksTuesday + "', Wednesday = '" + worksWednesday + "', Thursday = '" + worksThursday + "', Friday = '" + worksFriday + "', Saturday = '" + worksSaturday + "', Sunday = '" + worksSunday + "' Where employeeID = '" + schArtID + "'";
             System.out.println(sql);
             //executeUpdate needs to be used when updating a database executeQuery won't work here. 
             stmt.executeUpdate(sql);
