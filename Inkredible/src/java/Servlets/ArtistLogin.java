@@ -40,6 +40,7 @@ public class ArtistLogin extends HttpServlet {
             
             Artists a1 = new Artists();   //creates empty object
             a1.selectDB(id);   //does the DB lookup to find Customer
+            a1.getAppointments();
             String pwdb = a1.getAPW();
             String iddb = a1.getAID();
             

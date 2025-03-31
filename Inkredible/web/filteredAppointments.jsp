@@ -103,17 +103,11 @@
 <body>
     
         <%
-        Artists a1;
         
-        a1 = (Artists) session.getAttribute("a1");
-        
-        AppointmentList appointmentList = a1.aList; 
-        Appointments[] appointment = appointmentList.accArr;
-        System.out.println("Displaying appointment info");
-        a1.display1();
-        
+        AppointmentList filteredList = (AppointmentList) session.getAttribute("fl");
+        Appointments[] appointment = filteredList.accArr;
+        String selectedCustomer = (String) session.getAttribute("sCID");
         Appointments aP1;
-        Appointments aP2;
     
         %>
     
@@ -149,10 +143,9 @@
 
     <div class="content">
         <div class="text">
-            <h1>Customer & Appointment Info</h1>
             
             
-            <h2>List of All Appointments</h2>
+            <h2>Appointments for Customer: <%=selectedCustomer%></h2>
             <table border ="1">
             
             <tr>
@@ -163,15 +156,17 @@
             </tr>
             
             <%
-                for(int i = 0; i < a1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
-                    aP1 = appointment[i]; 
-                    
-                    System.out.println("Getting an Account");
-                    aP1.display(); //displaying the appoints to server log
-                
-            
+                if(filteredList.count == 0) { //Checks if there is anything there, if not then it'll show "No appointmetns found...."
             %>
             
+            <tr>
+                <td>No appointments found for this customer <%=selectedCustomer%> </td>
+            </tr>
+            <%
+                }else{
+                    for(int i = 0; i < filteredList.count; i++){ //loops through each of the appointment in the filtered list (Should be 1 appointment per customer)
+                    aP1 = appointment[i];
+            %>
             
             <tr>
                 <td><%= aP1.getADT()%></td> <!displays appointment date time>
@@ -182,33 +177,13 @@
             
             <%
             
+                    }
                 }
             %>
             
             </table>
             
-            <h2>Customer List and Their Appointment</h2>
             
-            <form method="post" action="FilterAppointments">
-                <label for="customer">Select Customer:</label>
-                <select name="CustomerID" id="CustomerID">
-                    <%
-                        for(int i = 0; i < a1.aList.count; i++){
-                            aP2 = appointment[i];
-                    %>
-                    
-                    <option value="<%= aP2.getCID()%>"> <!Value being used in servlet>
-                        Customer ID: <%= aP2.getCID()%> <!Value shown on webpage>
-                    </option>
-                    
-                    <%
-                    
-                        }
-                    %>
-                    
-                </select>
-                <button type="submit" class="login-btn">Select</button>
-            </form>
         </div>
     </div>
 

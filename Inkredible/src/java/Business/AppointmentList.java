@@ -27,5 +27,13 @@ public class AppointmentList {
     
     public static void main(String[] args){
         AppointmentList aList = new AppointmentList();
+        
+        Appointments a = new Appointments("January, 6th, 2025, 5pm", "A900", "C785", "500");
+        Appointments b = new Appointments("January, 6th, 2025, 6pm", "A902", "J961", "600");
+        
+        aList.addAppointment(a);
+        aList.addAppointment(b);
+        
+        aList.displayList();
     }
 }
