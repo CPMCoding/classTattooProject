@@ -10,9 +10,10 @@
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
+        }
+
+        .container {
             display: flex;
-            height: 100vh;
-            overflow-y: auto;
         }
 
         .sidebar {
@@ -75,111 +76,126 @@
         .content {
             flex: 1;
             padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
         }
 
-        .design-slot {
-            background-color: #333;
-            border-radius: 8px;
-            padding: 20px;
-            width: 300px;
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #d35400;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
-        .design-slot img {
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
             width: 100%;
             height: auto;
             border-radius: 8px;
-        }
-
-        .design-slot h2 {
-            margin-top: 10px;
-            font-size: 20px;
-            color: #d35400;
-        }
-
-        .design-slot p {
-            font-size: 14px;
-            margin: 10px 0;
-            color: #ddd;
-        }
-
-        .design-slot .artists {
-            font-size: 12px;
-            color: #aaa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <a href="index.html">
-            <img src="img/logo.png" alt="Logo">
-            </a>
-        </div>
-        <div class="title">INKREDIBLE</div>
-        <nav class="nav">
-            <a href="index.html">
-                <img src="img/menuHome.png" alt="Home" title="Home">
-            </a>
-            <a href="design.jsp">
-                <img src="img/menuDesigns.png" alt="Designs" title="Designs">
-            </a>
-            <a href="artists.jsp">
-                <img src="img/menuArtists.png" alt="Artists" title="Artists">
-            </a>
-            <a href="schedule.jsp">
-                <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
-            </a>
-            <a href="reviews.jsp">
-                <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
-            </a>
-        </nav>
-    </div>
-
-    <div class="content">
-        <!-- Design Slot 1 -->
-        <div class="design-slot">
-            <img src="placeholder1.jpg" alt="Realism Tattoo">
-            <h2>Realism Tattoos</h2>
-            <p>Hyper-realistic designs that bring your vision to life.</p>
-            <div class="artists">Artists: Jose Garcia, John Licata</div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="title">INKREDIBLE</div>
+            <nav class="nav">
+                <a href="index.html">
+                    <img src="img/menuHome.png" alt="Home" title="Home">
+                </a>
+                <a href="design.jsp">
+                    <img src="img/menuDesigns.png" alt="Designs" title="Designs">
+                </a>
+                <a href="artists.jsp">
+                    <img src="img/menuArtists.png" alt="Artists" title="Artists">
+                </a>
+                <a href="schedule.jsp">
+                    <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
+                </a>
+                <a href="reviews.jsp">
+                    <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
+                </a>
+            </nav>
         </div>
 
-        <!-- Design Slot 2 -->
-        <div class="design-slot">
-            <img src="placeholder2.jpg" alt="Traditional Tattoo">
-            <h2>Traditional Tattoos</h2>
-            <p>Bold lines and vibrant colors rooted in classic tattoo art.</p>
-            <div class="artists">Artists: Martin Christopher, Jose Alexis</div>
-        </div>
+        <div class="content">
+            <!-- Realism Tattoos -->
+            <div class="category">
+                <h2>Realism Tattoos</h2>
+                <div class="gallery">
+                    <img src="img/realismTattoo_1.jpg" alt="Realism Tattoo 1">
+                    <img src="img/realismTattoo_2.jpg" alt="Realism Tattoo 2">
+                    <img src="img/realismTattoo_3.jpg" alt="Realism Tattoo 3">
+                    <img src="img/realism4.jpg" alt="Realism Tattoo 4">
+                    <img src="img/realism5.webp" alt="Realism Tattoo 5">
+                    
+                </div>
+            </div>
 
-        <!-- Design Slot 3 -->
-        <div class="design-slot">
-            <img src="placeholder3.jpg" alt="Watercolor Tattoo">
-            <h2>Watercolor Tattoos</h2>
-            <p>Delicate and artistic designs inspired by watercolor painting.</p>
-            <div class="artists">Artists: John Licata, Touchstone Bryce</div>
-        </div>
+            <!-- Traditional Tattoos -->
+            <div class="category">
+                <h2>Traditional Tattoos</h2>
+                <div class="gallery">
+                    <img src="img/traditonal1.jpg" alt="Traditional Tattoo 1">
+                    <img src="img/traditional2.jpg" alt="Traditional Tattoo 2">
+                    <img src="img/traditional3.jpg" alt="Traditional Tattoo 3">
+                    <img src="img/traditional4.jpg" alt="Traditional Tattoo 4">
+                    <img src="img/traditional5.jpg" alt="Traditional Tattoo 5">
+                  
+                </div>
+            </div>
 
-        <!-- Design Slot 4 -->
-        <div class="design-slot">
-            <img src="placeholder4.jpg" alt="Geometric Tattoo">
-            <h2>Geometric Tattoos</h2>
-            <p>Modern designs featuring intricate patterns and symmetry.</p>
-            <div class="artists">Artists: Jose Alexis, Jose Garcia</div>
-        </div>
+            <!-- Watercolor Tattoos -->
+            <div class="category">
+                <h2>Watercolor Tattoos</h2>
+                <div class="gallery">
+                    <img src="img/watercolor1.jpg" alt="Watercolor Tattoo 1">
+                    <img src="img/watercolor2.jpg" alt="Watercolor Tattoo 2">
+                    <img src="img/watercolor3.jpg" alt="Watercolor Tattoo 3">
+                    <img src="img/watercolor4.jpg" alt="Watercolor Tattoo 4">
+                    <img src="img/watercolor5.jpg" alt="Watercolor Tattoo 5">
+                   
+                </div>
+            </div>
 
-        <!-- Design Slot 5 -->
-        <div class="design-slot">
-            <img src="placeholder5.jpg" alt="Minimalist Tattoo">
-            <h2>Minimalist Tattoos</h2>
-            <p>Simple, clean, and elegant tattoo designs.</p>
-            <div class="artists">Artists: Touchstone Bryce, Martin Christopher</div>
+            <!-- Geometric Tattoos -->
+            <div class="category">
+                <h2>Geometric Tattoos</h2>
+                <div class="gallery">
+                    <img src="img/geo1.jpg" alt="Geometric Tattoo 1">
+                    <img src="img/geo2.jpg" alt="Geometric Tattoo 2">
+                    <img src="img/geo3.jpg" alt="Geometric Tattoo 3">
+                    <img src="img/geo4.jpg" alt="Geometric Tattoo 4">
+                    <img src="img/geo5.jpg" alt="Geometric Tattoo 5">
+                   
+                </div>
+            </div>
+
+            <!-- Minimalist Tattoos -->
+            <div class="category">
+                <h2>Minimalist Tattoos</h2>
+                <div class="gallery">
+                    <img src="img/min1.png" alt="Minimalist Tattoo 1">
+                    <img src="img/min2.jpg" alt="Minimalist Tattoo 2">
+                    <img src="img/min3.jpg" alt="Minimalist Tattoo 3">
+                    <img src="img/min4.jpg" alt="Minimalist Tattoo 4">
+                    <img src="img/min5.jpg" alt="Minimalist Tattoo 5">
+        
+                </div>
+            </div>
         </div>
     </div>
 </body>
