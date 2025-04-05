@@ -253,16 +253,18 @@ public class Artists {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
-            String sql = "Select customerID from Appointments where employeeID = '" + artID + "'";
+            String sql = "SELECT * FROM Appointments WHERE employeeID = '" + artID + "'";
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
-            String an;
-            Appointments a1;
             while(rs.next()){
-                an = rs.getString(1);
-                a1 = new Appointments();
-                a1.selectCustDB(an);
-                aList.addAppointment(a1);
+                Appointments a = new Appointments();
+                
+                a.setADT(rs.getString(2));
+                a.setCID(rs.getString(4));
+                a.setAID(rs.getString(1));
+                a.setTCST(rs.getString(3));
+                
+                aList.addAppointment(a);
             }
             
             con.close();
@@ -281,6 +283,7 @@ public class Artists {
         System.out.println("Artist's Last Name: " + artLName);
         System.out.println("Artist's Email: " + artEmail);
         System.out.println("Artist's Style: " + artStyle);
+        System.out.println("=====================================");
         
         aList.displayList();
     }
