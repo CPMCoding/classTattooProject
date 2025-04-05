@@ -16,6 +16,7 @@ public class Customers {
     private String custFName;
     private String custLName;
     private String custEmail;
+    public AppointmentList aList = new AppointmentList();
 
     public Customers(){
         custID = "";
@@ -118,6 +119,33 @@ public class Customers {
             
             con.close();
             
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void getAppointments(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM Appointments WHERE customerID = '" + custID + "'";
+            System.out.println(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Appointments a = new Appointments();
+                
+                a.setADT(rs.getString(2));
+                a.setCID(rs.getString(4));
+                a.setAID(rs.getString(1));
+                a.setTCST(rs.getString(3));
+                
+                aList.addAppointment(a);
+            }
+            
+            con.close();
         }
         catch(Exception e){
             System.out.println(e);

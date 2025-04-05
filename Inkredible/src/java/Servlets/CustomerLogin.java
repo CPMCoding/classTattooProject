@@ -44,6 +44,7 @@ public class CustomerLogin extends HttpServlet {
         try{
             Customers c1 = new Customers(); //creates the customer object
             c1.selectDB(custID); //Selects the account info from database with the user input ID which was grabbed earlier 
+            c1.getAppointments();
             String pwdb = c1.getCPW(); //Gets the password of the user
             String iddb = c1.getCID(); // gets the ID of the user
             

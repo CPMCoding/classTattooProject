@@ -151,13 +151,12 @@
 <body>
 
     <% Customers c1;
-       Appointments a1 = new Appointments();
 
        c1 = (Customers) session.getAttribute("c1");
-       a1 = (Appointments) session.getAttribute("a1");
+       AppointmentList appointmentList = c1.aList; 
+       Appointments[] appointment = appointmentList.accArr;
 
-       String custID = c1.getCID();
-       a1.selectCustDB(custID); %>
+       Appointments aP1; %>
 
     <div class="sidebar">
         <div class="logo">
@@ -217,6 +216,20 @@
 
             <h2>Appointment Information</h2>
             <table>
+                
+                
+                <%
+                for(int i = 0; i < c1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
+                    aP1 = appointment[i]; 
+                    
+                    System.out.println("Getting an Account");
+                    aP1.display(); //displaying the appoints to server log
+                
+            
+                %>
+                
+                
+                
                 <tr>
                     <th>Appointment Date & Time</th>
                     <th>Customer ID</th>
@@ -224,11 +237,16 @@
                     <th>Total Cost</th>
                 </tr>
                 <tr>
-                    <td><%= a1.getADT() %></td>
-                    <td><%= a1.getCID() %></td>
-                    <td><%= a1.getAID() %></td>
-                    <td><%= a1.getTCST() %></td>
+                    <td><%= aP1.getADT() %></td>
+                    <td><%= aP1.getCID() %></td>
+                    <td><%= aP1.getAID() %></td>
+                    <td><%= aP1.getTCST() %></td>
                 </tr>
+                
+                <%
+                    }
+                %>
+                
             </table>
 
             <h2>Update Appointment Time</h2>
