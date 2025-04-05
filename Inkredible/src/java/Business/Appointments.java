@@ -132,6 +132,25 @@ public class Appointments {
         }
     }
     
+    public void updateDBArt(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Update Appointments Set cost = '" + tatCost  + "'";
+            //executeUpdate needs to be used when updating a database executeQuery won't work here. 
+            stmt.executeUpdate(sql);
+            
+            con.close();
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
     public void insertDB(String aDT, String aCID, String aAID, String aCost){
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -149,6 +168,58 @@ public class Appointments {
         catch(Exception e){
             System.out.println(e);
         }
+    }
+    
+    public void insertDBCust(String aDT, String aCID, String aAID){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Insert into Appointments (appointmentDateTime, customerID, employeeID) values('" + aDT + "', '" + aCID + "', '" + aAID + "')";
+            System.out.println(sql);
+            //executeUpdate needs to be used when updating a database executeQuery won't work here. 
+            stmt.executeUpdate(sql);
+            
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    
+    public boolean checkTIME(String apTIME) {
+        boolean timeExists = false;
+        try {
+            // Load the database driver
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver"); 
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+
+            // Create a statement to execute the query
+            Statement stmt = con.createStatement();
+
+            // SQL query to check if a customer exists with the provided cID
+            String sql = "SELECT COUNT(*) FROM Appointment WHERE appointmentDateTime = '" + apTIME + "'";
+
+            // Execute the query and get the result
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // if the record is found sets count to 1
+            if (rs.next() && rs.getInt(1) > 0) {
+                timeExists = true;  // sets exists to true and stops the customer from inserting into DB
+            }
+
+            // Close the connection
+            con.close();
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    
+        return timeExists;  // Return true if the customer ID exists, false otherwise
     }
     
     

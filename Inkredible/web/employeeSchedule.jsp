@@ -26,30 +26,25 @@
 
         .sidebar {
             width: 200px;
-            background-color: black;
+            background-color: #111;
             padding: 20px;
+            position: fixed;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-        }
-
         .logo img {
-            width: 100%;
-            height: 100%;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            object-fit: cover;
         }
 
         .title {
             font-family: 'Rye', cursive;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 20px;
+            margin: 15px 0;
             text-align: center;
         }
 
@@ -57,50 +52,106 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            font-family: 'Rye', cursive;
         }
 
         .nav a {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            border-radius: 5px;
-            cursor: pointer;
-            padding: 10px;
             text-align: center;
+            padding: 8px;
+            background-color: #222;
+            color: white;
+            text-decoration: none;
+            font-family: 'Rye', cursive;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
         }
 
         .nav a:hover {
             background-color: #333;
         }
 
-        .nav a img {
-            width: 85px;
-            height: 30px;
-        }
-
-        .content {
+        .content-container {
+            margin-left: 220px;
+            padding: 15px;
             flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
         }
 
-        .text {
+        .welcome {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
             text-align: center;
-            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            color: white;
         }
 
-        .image img {
+        .welcome h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        form {
+            padding: 15px;
+            background-color: #222;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        form p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input-field {
             width: 100%;
-            height: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .login-btn {
+            padding: 8px 12px;
+            background-color: #444;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #555;
+        }
+        
+        .currentSchedule {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -122,6 +173,7 @@
     </div>
     <jsp:useBean id="s1" scope="session" class="Business.Schedule"/>
     <% System.out.println("session created s1: " + s1.getSArtID() ); %>
+    <div class="currentSchedule">
     <h3>This is the current schedule</h3>
                     <tr>
                         <td>Username: </td>
@@ -155,6 +207,7 @@
                         <td>Sunday: </td>
                         <td><%= s1.getSUN() %></td>
                     </tr>
+    </div>
     <h3>Employee Schedule Search</h3>
         <form action="updateSchedule" method="post">  
             <h3>Change Employee Schedule</h3>
