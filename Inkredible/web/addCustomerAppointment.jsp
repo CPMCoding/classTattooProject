@@ -151,12 +151,13 @@
 <body>
 
     <% Customers c1;
+       Appointments a1 = new Appointments();
 
        c1 = (Customers) session.getAttribute("c1");
-       AppointmentList appointmentList = c1.aList; 
-       Appointments[] appointment = appointmentList.accArr;
+       a1 = (Appointments) session.getAttribute("a1");
 
-       Appointments aP1; %>
+       String custID = c1.getCID();
+       a1.selectCustDB(custID); %>
 
     <div class="sidebar">
         <div class="logo">
@@ -187,65 +188,21 @@
 
     <div class="content">
         <div class="text">
-            <h1>Welcome, <%= c1.getCFN() %>!</h1>
-            <table>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>Password</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                </tr>
-                <tr>
-                    <td><%= c1.getCID() %></td>
-                    <td><%= c1.getCPW() %></td>
-                    <td><%= c1.getCFN() %></td>
-                    <td><%= c1.getCLN() %></td>
-                    <td><%= c1.getCEM() %></td>
-                </tr>
-            </table>
 
-            <h2>Update Account Information</h2>
-            <form action="CustomerHome" method="post">
-                <input type="text" name="pass" id="pass" class="input-field" placeholder="Password">
-                <input type="text" name="cFN" id="cFN" class="input-field" placeholder="First Name">
-                <input type="text" name="cLN" id="cLN" class="input-field" placeholder="Last Name">
-                <input type="text" name="cEM" id="cEM" class="input-field" placeholder="Email">
-                <button type="submit" class="login-btn">Update</button>
-            </form>
-
-            <h2>Appointment Information</h2>
+            <h2>Current Appointment(s) Information</h2>
             <table>
-                
                 <tr>
                     <th>Appointment Date & Time</th>
                     <th>Customer ID</th>
                     <th>Artist ID</th>
                     <th>Total Cost</th>
                 </tr>
-                
-                <%
-                for(int i = 0; i < c1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
-                    aP1 = appointment[i]; 
-                    
-                    System.out.println("Getting an Account");
-                    aP1.display(); //displaying the appoints to server log
-                
-            
-                %>
-                
-                
                 <tr>
-                    <td><%= aP1.getADT() %></td>
-                    <td><%= aP1.getCID() %></td>
-                    <td><%= aP1.getAID() %></td>
-                    <td><%= aP1.getTCST() %></td>
+                    <td><%= a1.getADT() %></td>
+                    <td><%= a1.getCID() %></td>
+                    <td><%= a1.getAID() %></td>
+                    <td><%= a1.getTCST() %></td>
                 </tr>
-                
-                <%
-                    }
-                %>
-                
             </table>
 
             <h2>Update Appointment Time</h2>
@@ -254,6 +211,16 @@
                 <input type="text" name="aDT" id="aDT" class="input-field" placeholder="Appointment Time">
                 <button type="submit" class="login-btn">Update</button>
             </form>
+            
+            <!-- Thought is that the customer picks a time/artist and the artist will set the cost-->
+            <form action="createAppointment" method="post">  
+                <p>Appointment Time</p>
+                <input type="text" name="ncID" id="ncID" class="input-field" placeholder="Username" required>
+                <p>Employee Code</p>
+                <input type="password" name="ncPW" id="ncPW" class="input-field" placeholder="Password" required>
+                <button type="submit" class="login-btn">Sign up</button>
+            </form>
+            
         </div>
     </div>
 

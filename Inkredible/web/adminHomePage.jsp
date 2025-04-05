@@ -165,6 +165,9 @@
             <a href="reviews.jsp">
                 <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
             </a>
+            <form action="logoutServlet" method="post">
+            <button type="submit" class="login-btn">Logout</button>
+        </form>
         </nav>
     </div>
 
