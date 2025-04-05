@@ -217,6 +217,12 @@
             <h2>Appointment Information</h2>
             <table>
                 
+                <tr>
+                    <th>Appointment Date & Time</th>
+                    <th>Customer ID</th>
+                    <th>Artist ID</th>
+                    <th>Total Cost</th>
+                </tr>
                 
                 <%
                 for(int i = 0; i < c1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
@@ -229,13 +235,6 @@
                 %>
                 
                 
-                
-                <tr>
-                    <th>Appointment Date & Time</th>
-                    <th>Customer ID</th>
-                    <th>Artist ID</th>
-                    <th>Total Cost</th>
-                </tr>
                 <tr>
                     <td><%= aP1.getADT() %></td>
                     <td><%= aP1.getCID() %></td>
