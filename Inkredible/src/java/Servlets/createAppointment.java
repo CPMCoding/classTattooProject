@@ -33,23 +33,22 @@ public class createAppointment extends HttpServlet {
         a1.selectCustDB(custID);
         
         try {
-        String ncid = c1.getCID();
-        String ncpw = request.getParameter("ncPW");
-        String ncfn = request.getParameter("ncFN");
-        String ncln = request.getParameter("ncLN");
-        String ncem = request.getParameter("ncEM");
+        String nacid = c1.getCID();
+//        String nacid = request.getParameter("naCID");
+        String naadt = request.getParameter("naADT");
+        String naaid = request.getParameter("naAID");
+//        String nacst = request.getParameter("naCST");
         
-        System.out.println("id: " + ncid);
-        System.out.println("pw:  " + ncpw);
-        System.out.println("fn: " + ncfn);
-        System.out.println("ln: " + ncln);
-        System.out.println("em: " + ncem);
+        System.out.println("cid: " + nacid);
+        System.out.println("adt:  " + naadt);
+        System.out.println("aid: " + naaid);
+//        System.out.println("cst: " + nacst);
         
         
         
         ///////       make it to where the customer creates a id and submits it, have it be checked against the ids in the database and if it comes back TRUE then make it to where the customer DOES NOT create the account. If it comes back FALSE let it go through
         Appointments newAppointment = new Appointments();
-        boolean timeExists = newAppointment.checkTIME(ncid);
+        boolean timeExists = newAppointment.checkTIME(naadt);
 
         if (timeExists) {
             // This works by sending the strings into a responce stream that reads it as normal html code
@@ -61,21 +60,20 @@ public class createAppointment extends HttpServlet {
             out.println("</body></html>"); 
         } 
         else {
-            newAppointment.setCID(ncid);
-            newAppointment.setCPW(ncpw);
-            newAppointment.setCFN(ncfn);
-            newAppointment.setCLN(ncln);
-            newCustomer.setCEM(ncem);
-            newCustomer.insertDB(ncid, ncem, ncpw, ncfn, ncln);
+            newAppointment.setCID(nacid);
+            newAppointment.setADT(naadt);
+            newAppointment.setAID(naaid);
+//            newAppointment.setTCST(ncln);
+            newAppointment.insertDBCust(naadt, nacid, naaid);
 
-            response.sendRedirect("customerAccountCreated.jsp"); // sends customer to sign in page after clocking on another button
+            response.sendRedirect("appointmentCreated.jsp"); // sends customer to sign in page after clocking on another button
         }
         } //end of try
         catch(Exception e){
             System.out.println(e);
         }
         finally {
-            System.out.println("ID check Servlet ending...");
+            System.out.println("Create appointment Servlet ending...");
             out.close();
         }//end finally
     }// end process req

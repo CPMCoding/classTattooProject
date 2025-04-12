@@ -209,6 +209,13 @@
                 </select>
                 <button type="submit" class="login-btn">Select</button>
             </form>
+                    
+            <h2>Update Appointment Cost</h2>
+            <form action="artistUpdateCost" method="post">
+                <input type="text" name="uaADT" id="uaADT" class="input-field" placeholder="Appointment Time">
+                <input type="text" name="uaCST" id="uaCST" class="input-field" placeholder="Cost">
+                <button type="submit" class="login-btn">Update</button>
+            </form>
         </div>
     </div>
 

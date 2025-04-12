@@ -254,6 +254,14 @@
                 <input type="text" name="aDT" id="aDT" class="input-field" placeholder="Appointment Time">
                 <button type="submit" class="login-btn">Update</button>
             </form>
+            
+            <h2>Create Appointment</h2>
+            <form action="createAppointment" method="post">
+                <!--<input type="text" name="naCID" id="naCID" class="input-field" placeholder="Customer ID">-->
+                <input type="text" name="naAID" id="naAID" class="input-field" placeholder="Artist ID">
+                <input type="text" name="naADT" id="naADT" class="input-field" placeholder="Appointment Time">
+                <button type="submit" class="login-btn">Create</button>
+            </form>
         </div>
     </div>
 

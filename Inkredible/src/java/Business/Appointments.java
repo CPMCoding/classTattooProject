@@ -113,6 +113,30 @@ public class Appointments {
         }
     }
     
+    public void selectADTDB(String ADT){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Select * from Appointments where appointmentDateTime = '" + ADT + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            apptDT = rs.getString(2); 
+            custID = rs.getString(4); 
+            artistID = rs.getString(1); 
+            tatCost = rs.getString(3); 
+            
+            con.close();
+            
+            
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    
     public void updateDB(){
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -122,10 +146,15 @@ public class Appointments {
             Statement stmt = con.createStatement();
             String sql = "Update Appointments Set appointmentDateTime = '" + apptDT + "', employeeID = '" + artistID + "', cost = '" + tatCost + "'Where customerID = '" + custID + "'";
             //executeUpdate needs to be used when updating a database executeQuery won't work here. 
-            stmt.executeUpdate(sql);
-            
-            con.close();
-            
+            int n1 = stmt.executeUpdate(sql);
+                if (n1==1){
+                    System.out.println("UPDATE Successful!!!");
+                }
+                else {
+                    System.out.println("UPDATE FAILED !!!!!!!!!!!!!!!!!!!");
+                }
+        
+            con.close();    
         }
         catch(Exception e){
             System.out.println(e);
@@ -139,10 +168,16 @@ public class Appointments {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
             
             Statement stmt = con.createStatement();
-            String sql = "Update Appointments Set cost = '" + tatCost  + "'";
+            String sql = "Update Appointments Set cost = '" + tatCost + "'Where appointmentDateTime = '" + apptDT + "'";
+            System.out.println(sql);
             //executeUpdate needs to be used when updating a database executeQuery won't work here. 
-            stmt.executeUpdate(sql);
-            
+            int n1 = stmt.executeUpdate(sql);
+                if (n1==1){
+                    System.out.println("UPDATE Successful!!!");
+                }
+                else {
+                    System.out.println("UPDATE FAILED !!!!!!!!!!!!!!!!!!!");
+                }
             con.close();
             
         }
