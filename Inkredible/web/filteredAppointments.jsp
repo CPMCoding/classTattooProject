@@ -108,6 +108,14 @@
         Appointments[] appointment = filteredList.accArr;
         String selectedCustomer = (String) session.getAttribute("sCID");
         Appointments aP1;
+        
+        Customers c1;
+
+        c1 = (Customers) session.getAttribute("c1");
+        AppointmentList appointmentList = c1.aList; 
+        Appointments[] appointment2 = appointmentList.accArr;
+
+        Appointments aP2;
     
         %>
     
@@ -145,7 +153,7 @@
         <div class="text">
             
             
-            <h2>Appointments for Customer: <%=selectedCustomer%></h2>
+            <h2>Appointments with Customer: <%=c1.getCFN()%></h2>
             <table border ="1">
             
             <tr>
@@ -160,7 +168,7 @@
             %>
             
             <tr>
-                <td>No appointments found for this customer <%=selectedCustomer%> </td>
+                <td>No appointments found for this customer <%=c1.getCFN()%> </td>
             </tr>
             <%
                 }else{
@@ -183,6 +191,40 @@
             
             </table>
             
+            <h2>The Appointment History for <%=c1.getCFN()%></h2>
+            
+            <table border="1">
+                
+                <tr>
+                    <th>Appointment Date & Time</th>
+                    <th>Customer ID</th>
+                    <th>Artist ID</th>
+                    <th>Total Cost</th>
+                </tr>
+                
+                <%
+                for(int i = 0; i < c1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
+                    aP2 = appointment2[i]; 
+                    
+                    System.out.println("Getting an Account");
+                    aP2.display(); //displaying the appoints to server log
+                
+            
+                %>
+                
+                
+                <tr>
+                    <td><%= aP2.getADT() %></td>
+                    <td><%= aP2.getCID() %></td>
+                    <td><%= aP2.getAID() %></td>
+                    <td><%= aP2.getTCST() %></td>
+                </tr>
+                
+                <%
+                    }
+                %>
+                
+            </table>
             
         </div>
     </div>

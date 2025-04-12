@@ -165,7 +165,7 @@
             <%
                 for(int i = 0; i < a1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
                     aP1 = appointment[i]; 
-                    
+                   
                     System.out.println("Getting an Account");
                     aP1.display(); //displaying the appoints to server log
                 

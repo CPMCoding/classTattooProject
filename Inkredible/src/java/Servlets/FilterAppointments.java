@@ -35,6 +35,10 @@ public class FilterAppointments extends HttpServlet {
 
             AppointmentList filteredList = new AppointmentList(); //Making new Appointment list object called "filterList"
             Appointments[] appointment = a1.aList.accArr;  //Pulls the appointment info per artist info from login
+            
+            Customers c1 = new Customers();
+            c1.selectDB(selectedCID);
+            c1.getAppointments();
 
             Appointments aP1;
 
@@ -47,6 +51,7 @@ public class FilterAppointments extends HttpServlet {
 
             ses1.setAttribute("fl", filteredList); //stores filtered list back in session
             ses1.setAttribute("sCID", selectedCID); // stroes selected CID back  in sesion
+            ses1.setAttribute("c1", c1);
 
             //Doing a redirect for now
             RequestDispatcher rd = request.getRequestDispatcher("/filteredAppointments.jsp");
