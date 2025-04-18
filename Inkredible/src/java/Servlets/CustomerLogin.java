@@ -45,6 +45,7 @@ public class CustomerLogin extends HttpServlet {
             Customers c1 = new Customers(); //creates the customer object
             c1.selectDB(custID); //Selects the account info from database with the user input ID which was grabbed earlier 
             c1.getAppointments();
+            AppointmentList available = Customers.getAvailableAppointments();
             String pwdb = c1.getCPW(); //Gets the password of the user
             String iddb = c1.getCID(); // gets the ID of the user
             
@@ -55,6 +56,7 @@ public class CustomerLogin extends HttpServlet {
             ses1 = request.getSession();  // creating session 
             ses1.setAttribute("c1", c1); //Telling the sesion what the attribute is for the customer class
             ses1.setAttribute("a1", a1); //Telling the session what the attribute is for the Appointments class 
+            ses1.setAttribute("availableAppts", available);
             System.out.println("Customer added to session");
             
             if(custPass.equals(pwdb) && custID.equals(iddb)){  // verifying login info which includes ID and password 

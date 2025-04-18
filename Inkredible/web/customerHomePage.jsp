@@ -291,6 +291,37 @@
                     <input type="text" name="aDT" class="input-field" placeholder="Appointment Time">
                     <button type="submit" class="login-btn">Update</button>
                 </form>
+                
+                <%
+                    AppointmentList availableList = (AppointmentList) session.getAttribute("availableAppts");
+                    Appointments[] availableAppts = availableList.accArr;
+                    
+                    Appointments aP2;
+                %>
+                
+                <h2>Available Appointments</h2>
+                <table>
+                    <tr>
+                        <th> Appointment Date & Time </th>
+                        <th>Artist</th>
+                    </tr>
+                    
+                    <%
+                        for(int i = 0; i < availableList.count; i++){
+                            aP2 = availableAppts[i];
+                        
+                    %>
+                    <tr>
+                        <td><%=aP2.getADT()%></td>
+                        <td><%=aP2.getAID()%></td>
+                    </tr>
+                    
+                    <%
+                        }
+                    %>
+                    
+                    
+                </table>
 
                 <h2>Create Appointment</h2>
                 <form action="createAppointment" method="post">

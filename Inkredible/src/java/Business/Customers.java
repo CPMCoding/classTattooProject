@@ -152,6 +152,35 @@ public class Customers {
         }
     }
     
+    public static AppointmentList getAvailableAppointments() {
+        AppointmentList availableList = new AppointmentList();
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Select * FROM Appointments WHERE customerID IS NULL OR customerID = ''";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while(rs.next()){
+                Appointments appt = new Appointments();
+                appt.setADT(rs.getString(2));
+                appt.setCID(rs.getString(4));
+                appt.setAID(rs.getString(1));
+                appt.setTCST(rs.getString(3));
+                
+                availableList.addAppointment(appt);
+            }
+            
+            con.close();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        return availableList;
+    }
+    
     public void insertDB(String cid, String cpw, String cfn, String cln, String cem){
         
         setCPW(cpw);
@@ -226,6 +255,8 @@ public class Customers {
     
         return idExists;  // Return true if the customer ID exists, false otherwise
     }
+    
+    
     
    //Used for testing
     public static void main(String[]args){
