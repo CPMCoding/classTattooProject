@@ -1,274 +1,309 @@
-<!CUSTOMER HOME PAGE. USING ARTIST.JSP AS A BASE>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Business.*"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Home</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customer Home</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #121212;
+                color: #ffffff;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                overflow: hidden;
+            }
 
-        .sidebar {
-            width: 200px;
-            background-color: #1f1f1f;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            position: fixed;
-        }
+            .sidebar {
+                width: 200px;
+                background-color: #1f1f1f;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start; 
+                height: 100vh;
+                position: fixed;
+            }
 
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
-            
-        }
 
-        .logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+            .logo {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 10px;
+            }
 
-        .title {
-            font-family: 'Rye', cursive;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #ff6f61;
-        }
+            .logo img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
 
-        .nav {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
+            .title {
+                font-family: 'Rye', cursive;
+                font-size: 24px;
+                text-align: center;
+                color: #ff6f61;
+                margin-bottom: 20px;
+            }
 
-        .nav a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #333333;
-            border-radius: 8px;
-            padding: 10px;
-            transition: background-color 0.3s;
-        }
+            .nav {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+                align-items: center;
+            }
 
-        .nav a:hover {
-            background-color: #555555;
-        }
+            .nav a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #333333;
+                border-radius: 10px;
+                padding: 15px;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+            }
 
-        .nav a img {
-            width: 85px;
-            height: auto;
-        }
+            .nav a:hover {
+                background-color: #ff6f61;
+                color: black;
+                border: 2px solid #ff6f61;
+                box-shadow: 0 0 10px #ff6f61;
+                transform: scale(1.05);
+            }
 
-        .content {
-            margin-left: 220px;
-            padding: 20px;
-            flex: 1;
-            overflow-y: auto;
-        }
+            .nav a img {
+                width: 60px;
+                height: auto;
+            }
 
-        h1, h2 {
-            color: #ff6f61;
-        }
+            .nav a span {
+                margin-top: 8px;
+                font-size: 14px;
+            }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #1f1f1f;
-        }
+            .content {
+                margin-left: 220px;
+                padding: 20px;
+                flex: 1;
+                overflow-y: auto;
+            }
 
-        table, th, td {
-            border: 1px solid #444;
-        }
+            h1, h2 {
+                color: #ff6f61;
+            }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                background-color: #1f1f1f;
+                border-radius: 10px;
+                overflow: hidden;
+            }
 
-        th {
-            background-color: #333333;
-        }
+            table, th, td {
+                border: 1px solid #444;
+            }
 
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #222;
-            color: #fff;
-        }
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
 
-        .login-btn {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+            th {
+                background-color: #333333;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
 
-        .login-btn:hover {
-            background-color: #ff3b2f;
-        }
+            tr:nth-child(even) {
+                background-color: #2c2c2c;
+            }
 
-        .image {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            opacity: 0.1;
-        }
+            .input-field {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #444;
+                border-radius: 5px;
+                background-color: #222;
+                color: #fff;
+            }
 
-        .image img {
-            max-width: 500px;
-            height: auto;
-        }
+            .login-btn {
+                background-color: #ff6f61;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
 
-    </style>
-</head>
-<body>
+            .login-btn:hover {
+                background-color: #ff3b2f;
+            }
 
-    <% Customers c1;
+            form {
+                margin-bottom: 30px;
+            }
 
-       c1 = (Customers) session.getAttribute("c1");
-       AppointmentList appointmentList = c1.aList; 
-       Appointments[] appointment = appointmentList.accArr;
+            .image {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                opacity: 0.1;
+            }
 
-       Appointments aP1; %>
+            .image img {
+                max-width: 500px;
+                height: auto;
+            }
 
-    <div class="sidebar">
-        <div class="logo">
-            <img src="img/logo.png" alt="Logo">
-        </div>
-        <div class="title">INKREDIBLE</div>
-        <nav class="nav">
-            <a href="index.html">
-                <img src="img/menuHome.png" alt="Home" title="Home">
-            </a>
-            <a href="design.jsp">
-                <img src="img/menuDesigns.png" alt="Designs" title="Designs">
-            </a>
-            <a href="artists.jsp">
-                <img src="img/menuArtists.png" alt="Artists" title="Artists">
-            </a>
-            <a href="schedule.jsp">
-                <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
-            </a>
-            <a href="reviews.jsp">
-                <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
-            </a>
-            <a href="customerAccountDetails.jsp">
-                <img src="customerAccountDetails.png" alt="Account Details" title="Account Details">
-            </a>
-        </nav>
-    </div>
+            @media (max-width: 768px) {
+                .sidebar {
+                    flex-direction: row;
+                    height: auto;
+                    width: 100%;
+                    justify-content: space-around;
+                    padding: 10px;
+                    position: relative;
+                }
 
-    <div class="content">
-        <div class="text">
-            <h1>Welcome, <%= c1.getCFN() %>!</h1>
-            <table>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>Password</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                </tr>
-                <tr>
-                    <td><%= c1.getCID() %></td>
-                    <td><%= c1.getCPW() %></td>
-                    <td><%= c1.getCFN() %></td>
-                    <td><%= c1.getCLN() %></td>
-                    <td><%= c1.getCEM() %></td>
-                </tr>
-            </table>
+                .content {
+                    margin-left: 0;
+                }
 
-            <h2>Update Account Information</h2>
-            <form action="CustomerHome" method="post">
-                <input type="text" name="pass" id="pass" class="input-field" placeholder="Password">
-                <input type="text" name="cFN" id="cFN" class="input-field" placeholder="First Name">
-                <input type="text" name="cLN" id="cLN" class="input-field" placeholder="Last Name">
-                <input type="text" name="cEM" id="cEM" class="input-field" placeholder="Email">
-                <button type="submit" class="login-btn">Update</button>
-            </form>
+                .nav {
+                    flex-direction: row;
+                    gap: 15px;
+                }
 
-            <h2>Appointment Information</h2>
-            <table>
-                
-                <tr>
-                    <th>Appointment Date & Time</th>
-                    <th>Customer ID</th>
-                    <th>Artist ID</th>
-                    <th>Total Cost</th>
-                </tr>
-                
-                <%
-                for(int i = 0; i < c1.aList.count; i++){ //looping each appointment the employee ID is associated with, could be 1 or more appointments within the table.
-                    aP1 = appointment[i]; 
+                .nav a img {
+                    width: 40px;
+                }
+
+                .nav a span {
+                    font-size: 12px;
+                }
+
+                .logo {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <%
+            Customers c1 = (Customers) session.getAttribute("c1");
+            AppointmentList appointmentList = c1.aList;
+            Appointments[] appointment = appointmentList.accArr;
+            Appointments aP1;
+        %>
+
+        <div class="sidebar">
+            <div>
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo">
+                </div>
+                <div class="title">INKREDIBLE</div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">
+                    <img src="img/menuHome.png" alt="Home" title="Home">
                     
-                    System.out.println("Getting an Account");
-                    aP1.display(); //displaying the appoints to server log
-                
-            
-                %>
-                
-                
-                <tr>
-                    <td><%= aP1.getADT() %></td>
-                    <td><%= aP1.getCID() %></td>
-                    <td><%= aP1.getAID() %></td>
-                    <td><%= aP1.getTCST() %></td>
-                </tr>
-                
-                <%
-                    }
-                %>
-                
-            </table>
-
-            <h2>Update Appointment Time</h2>
-            <form action="CustomerHome" method="post">
-                <input type="text" name="cID" id="cID" class="input-field" placeholder="Customer ID">
-                <input type="text" name="aDT" id="aDT" class="input-field" placeholder="Appointment Time">
-                <button type="submit" class="login-btn">Update</button>
-            </form>
-            
-            <h2>Create Appointment</h2>
-            <form action="createAppointment" method="post">
-                <!--<input type="text" name="naCID" id="naCID" class="input-field" placeholder="Customer ID">-->
-                <input type="text" name="naAID" id="naAID" class="input-field" placeholder="Artist ID">
-                <input type="text" name="naADT" id="naADT" class="input-field" placeholder="Appointment Time">
-                <button type="submit" class="login-btn">Create</button>
-            </form>
+                </a>
+                <a href="customerAccountDetails.jsp">
+                    <!-- <img src="customerAccountDetails.png" alt="Account Details" title="Account Details"> -->
+                    <span>Account</span>
+                </a>
+            </nav>
         </div>
-    </div>
 
-    <div class="image">
-        <img src="background3.png" alt="Background" title="Background">
-    </div>
+        <div class="content">
+            <div class="text">
+                <h1>Welcome, <%= c1.getCFN()%>!</h1>
 
-</body>
+                <table>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                        <td><%= c1.getCID()%></td>
+                        <td><%= c1.getCPW()%></td>
+                        <td><%= c1.getCFN()%></td>
+                        <td><%= c1.getCLN()%></td>
+                        <td><%= c1.getCEM()%></td>
+                    </tr>
+                </table>
+
+                <h2>Update Account Information</h2>
+                <form action="CustomerHome" method="post">
+                    <input type="text" name="pass" class="input-field" placeholder="Password">
+                    <input type="text" name="cFN" class="input-field" placeholder="First Name">
+                    <input type="text" name="cLN" class="input-field" placeholder="Last Name">
+                    <input type="text" name="cEM" class="input-field" placeholder="Email">
+                    <button type="submit" class="login-btn">Update</button>
+                </form>
+
+                <h2>Appointment Information</h2>
+                <table>
+                    <tr>
+                        <th>Appointment Date & Time</th>
+                        <th>Customer ID</th>
+                        <th>Artist ID</th>
+                        <th>Total Cost</th>
+                    </tr>
+                    <%
+                        for (int i = 0; i < c1.aList.count; i++) {
+                            aP1 = appointment[i];
+                            aP1.display();
+                    %>
+                    <tr>
+                        <td><%= aP1.getADT()%></td>
+                        <td><%= aP1.getCID()%></td>
+                        <td><%= aP1.getAID()%></td>
+                        <td><%= aP1.getTCST()%></td>
+                    </tr>
+                    <% }%>
+                </table>
+
+                <h2>Update Appointment Time</h2>
+                <form action="CustomerHome" method="post">
+                    <input type="text" name="cID" class="input-field" placeholder="Customer ID">
+                    <input type="text" name="aDT" class="input-field" placeholder="Appointment Time">
+                    <button type="submit" class="login-btn">Update</button>
+                </form>
+
+                <h2>Create Appointment</h2>
+                <form action="createAppointment" method="post">
+                    <input type="text" name="naAID" class="input-field" placeholder="Artist ID">
+                    <input type="text" name="naADT" class="input-field" placeholder="Appointment Time">
+                    <button type="submit" class="login-btn">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="background3.png" alt="Background" title="Background">
+        </div>
+
+    </body>
 </html>
-<!CUSTOMER HOME PAGE. USING ARTIST.JSP AS A BASE>

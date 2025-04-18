@@ -11,8 +11,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
@@ -46,6 +46,7 @@
             font-size: 20px;
             margin: 15px 0;
             text-align: center;
+            color: #ff6f61;
         }
 
         .nav {
@@ -72,44 +73,41 @@
 
         .content-container {
             margin-left: 220px;
-            padding: 15px;
+            padding: 20px;
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
             overflow-y: auto;
-        }
-
-        .welcome {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            color: white;
-        }
-
-        .welcome h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: #ddd;
         }
 
         h3 {
             font-size: 18px;
-            margin: 0 0 10px 0;
+            color: #ff6f61;
+        }
+
+        .currentSchedule {
+            background-color: #222;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .currentSchedule table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .currentSchedule td {
+            padding: 10px;
+            border: 1px solid #444;
         }
 
         form {
-            padding: 15px;
             background-color: #222;
+            padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         form p {
-            margin: 5px 0;
+            margin: 8px 0 5px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -124,114 +122,106 @@
             color: white;
             font-size: 14px;
         }
-        
+
         .login-btn {
             padding: 8px 12px;
-            background-color: #444;
+            background-color: #ff6f61;
             border: none;
             border-radius: 4px;
             color: white;
             font-weight: bold;
             font-size: 14px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: auto;
             margin-right: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .login-btn:hover {
-            background-color: #555;
+            background-color: #ff3b2f;
         }
-        
-        .currentSchedule {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background-color: #333;
-            color: white;
-            font-size: 14px;
+
+        .image {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        .image img {
+            max-width: 500px;
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <div class="title">INKREDIBLE</div>
-        <nav class="nav">
-            <a href="adminHomePage.jsp">
-                <img src="menuHome.png" alt="adminHome" title="Admin Home Page">
-            </a>
-        </nav>
+
+<jsp:useBean id="s1" scope="session" class="Business.Schedule"/>
+<% System.out.println("session created s1: " + s1.getSArtID()); %>
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo">
+    </div>
+    <div class="title">INKREDIBLE</div>
+    <nav class="nav">
+        <a href="adminHomePage.jsp">
+            <!-- <img src="menuHome.png" alt="adminHome" title="Admin Home Page"> -->
+            <span>Admin Home</span>
+        </a>
+    </nav>
+</div>
+
+<div class="image">
+    <img src="background3.png" alt="Background" title="Background">
+</div>
+
+<div class="content-container">
+    <div class="currentSchedule">
+        <h3>This is the current schedule</h3>
+        <table>
+            <tr><td>Username:</td><td><%= s1.getSArtID() %></td></tr>
+            <tr><td>Monday:</td><td><%= s1.getMON() %></td></tr>
+            <tr><td>Tuesday:</td><td><%= s1.getTUES() %></td></tr>
+            <tr><td>Wednesday:</td><td><%= s1.getWED() %></td></tr>
+            <tr><td>Thursday:</td><td><%= s1.getTHUR() %></td></tr>
+            <tr><td>Friday:</td><td><%= s1.getFRI() %></td></tr>
+            <tr><td>Saturday:</td><td><%= s1.getSAT() %></td></tr>
+            <tr><td>Sunday:</td><td><%= s1.getSUN() %></td></tr>
+        </table>
     </div>
 
-    <div class="image">
-        <img src="background3.png" alt="Background" title="Background">
-    </div>
-    <jsp:useBean id="s1" scope="session" class="Business.Schedule"/>
-    <% System.out.println("session created s1: " + s1.getSArtID() ); %>
-    <div class="currentSchedule">
-    <h3>This is the current schedule</h3>
-                    <tr>
-                        <td>Username: </td>
-                        <td><%= s1.getSArtID() %></td>
-                    </tr>
-                    <tr>
-                        <td>Monday: </td>
-                        <td><%= s1.getMON() %></td>
-                    </tr>
-                    <tr>
-                        <td>Tuesday: </td>
-                        <td><%= s1.getTUES() %></td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday: </td>
-                        <td><%= s1.getWED() %></td>
-                    </tr>
-                    <tr>
-                        <td>Thursday: </td>
-                        <td><%= s1.getTHUR() %></td>
-                    </tr>
-                    <tr>
-                        <td>Friday: </td>
-                        <td><%= s1.getFRI() %></td>
-                    </tr>
-                    <tr>
-                        <td>Saturday: </td>
-                        <td><%= s1.getSAT() %></td>
-                    </tr>
-                    <tr>
-                        <td>Sunday: </td>
-                        <td><%= s1.getSUN() %></td>
-                    </tr>
-    </div>
     <h3>Employee Schedule Search</h3>
-        <form action="updateSchedule" method="post">  
-            <h3>Change Employee Schedule</h3>
-            <p>Username</p>
-            <input type="text" name= "usID" id= "usID" class= "input-field" placeholder= "Username" required>
-            <p>Monday</p>
-            <input type="text" name= "usMON" id= "usMON" class= "input-field" placeholder= "True/False" required>
-            <p>Tuesday</p>
-            <input type="text" name= "usTUES" id= "usTUES" class= "input-field" placeholder= "True/False" required>
-            <p>Wednesday</p>
-            <input type="text" name= "usWED" id= "usWED" class= "input-field" placeholder= "True/False" required>
-            <p>Thursday</p>
-            <input type="text" name= "usTHUR" id= "usTHUR" class= "input-field" placeholder= "True/False" required>
-            <p>Friday</p>
-            <input type="text" name= "usFRI" id= "usFRI" class= "input-field" placeholder= "True/False" required>
-            <p>Saturday</p>
-            <input type="text" name= "usSAT" id= "usSAT" class= "input-field" placeholder= "True/False" required>
-            <p>Sunday</p>
-            <input type="text" name= "usSUN" id= "usSUN" class= "input-field" placeholder= "True/False" required>
-            
-            <button type="submit" class="login-btn">Update</button>
-            <button type="reset" class="login-btn">Clear</button>
-        </form>
-    
+    <form action="updateSchedule" method="post">  
+        <h3>Change Employee Schedule</h3>
+        <p>Username</p>
+        <input type="text" name="usID" id="usID" class="input-field" placeholder="Username" required>
+        
+        <p>Monday</p>
+        <input type="text" name="usMON" id="usMON" class="input-field" placeholder="True/False" required>
+
+        <p>Tuesday</p>
+        <input type="text" name="usTUES" id="usTUES" class="input-field" placeholder="True/False" required>
+
+        <p>Wednesday</p>
+        <input type="text" name="usWED" id="usWED" class="input-field" placeholder="True/False" required>
+
+        <p>Thursday</p>
+        <input type="text" name="usTHUR" id="usTHUR" class="input-field" placeholder="True/False" required>
+
+        <p>Friday</p>
+        <input type="text" name="usFRI" id="usFRI" class="input-field" placeholder="True/False" required>
+
+        <p>Saturday</p>
+        <input type="text" name="usSAT" id="usSAT" class="input-field" placeholder="True/False" required>
+
+        <p>Sunday</p>
+        <input type="text" name="usSUN" id="usSUN" class="input-field" placeholder="True/False" required>
+
+        <button type="submit" class="login-btn">Update</button>
+        <button type="reset" class="login-btn">Clear</button>
+    </form>
+</div>
+
 </body>
 </html>
 <!ADMIN HOME PAGE. USING ARTIST.JSP AS A BASE>
