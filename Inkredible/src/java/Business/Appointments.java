@@ -237,7 +237,7 @@ public class Appointments {
             Statement stmt = con.createStatement();
 
             // SQL query to check if a customer exists with the provided cID
-            String sql = "SELECT COUNT(*) FROM Appointment WHERE appointmentDateTime = '" + apTIME + "'";
+            String sql = "SELECT COUNT(*) FROM Appointments WHERE appointmentDateTime = '" + apTIME + "'";
 
             // Execute the query and get the result
             ResultSet rs = stmt.executeQuery(sql);
