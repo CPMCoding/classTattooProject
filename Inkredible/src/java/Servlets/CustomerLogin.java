@@ -66,8 +66,13 @@ public class CustomerLogin extends HttpServlet {
                 System.out.println("Hello2");
             }
             else{
-                RequestDispatcher rd = request.getRequestDispatcher("artists.jsp"); //Temp name "LoginError.jsp" may change
-                rd.forward(request,response);
+                // This works by sending the strings into a responce stream that reads it as normal html code
+                out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+                out.println("<script type='text/javascript'>");// looks like this alery
+                out.println("alert('Incorrect username or password!');");// in this case just an alert with nothing in the body
+                out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+                out.println("</script>");//the rest is to just close the remaining html page
+                out.println("</body></html>"); 
             }
             
         }

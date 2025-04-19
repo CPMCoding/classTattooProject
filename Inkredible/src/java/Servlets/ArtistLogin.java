@@ -73,8 +73,13 @@ public class ArtistLogin extends HttpServlet {
             }
             
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("/design.jsp");// Login error screen for incorrect login info. PAGE MAY CHAGE
-                rd.forward(request, response);  
+                // This works by sending the strings into a responce stream that reads it as normal html code
+                out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+                out.println("<script type='text/javascript'>");// looks like this alery
+                out.println("alert('Incorrect username or password!');");// in this case just an alert with nothing in the body
+                out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+                out.println("</script>");//the rest is to just close the remaining html page
+                out.println("</body></html>");
 
             }//end if else
         } // end of try
