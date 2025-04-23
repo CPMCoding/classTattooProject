@@ -19,39 +19,51 @@ public class UpdateCustomerServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {        // THESE GET PARAMETERS WILL NEED TO CHANGE WHEN UPDATE JSP IS MADE
-        String ucid = request.getParameter("datb");
-        String ucpw = request.getParameter("dptb");
-        String ucfn = request.getParameter("dftb");
-        String ucln = request.getParameter("dltb");
-        String ucem = request.getParameter("detb");
-        
-        System.out.println("id: " + ucid);
-        System.out.println("pw: " + ucpw);
-        System.out.println("fn: " + ucfn);
-        System.out.println("ln: " + ucln) ;
-        System.out.println("em: " + ucem);
-        
-        HttpSession ses1;
-        
-        
-        Customers updatedCustomer = new Customers();
-        updatedCustomer.selectDB(ucid);
-        // Code to update the customer in the database
-//        updatedPatient.setPID(upid);  THIS IS TO ALLOW CUSTOMERS TO CHANGE THEIR ID. WHICH IS GENERALLY BAD
-        updatedCustomer.setCPW(ucpw);
-        updatedCustomer.setCFN(ucfn);
-        updatedCustomer.setCLN(ucln);
-        updatedCustomer.setCEM(ucem);
-        updatedCustomer.updateDB();
-        
-        // THE REDIRECTS WILL NEED TO CHANGE BASED ON THE JSPS MADE
-        response.sendRedirect("customerEditAccount.jsp");
+            
+            // this should pull the customer id from the session instead of the customer inputing it to change their info
+            HttpSession ses1;
+            ses1 = request.getSession();  // creating session 
+            Customers c1 = (Customers) ses1.getAttribute("c1");
+            String ucid = c1.getCID();
+            
+            String ucpw = request.getParameter("dptb");
+            String ucfn = request.getParameter("dftb");
+            String ucln = request.getParameter("dltb");
+            String ucem = request.getParameter("detb");
+
+            System.out.println("id: " + ucid);
+            System.out.println("pw: " + ucpw);
+            System.out.println("fn: " + ucfn);
+            System.out.println("ln: " + ucln) ;
+            System.out.println("em: " + ucem);
+
+            
+
+
+            Customers updatedCustomer = new Customers();
+            updatedCustomer.selectDB(ucid);
+            // Code to update the customer in the database
+    //        updatedPatient.setPID(upid);  THIS IS TO ALLOW CUSTOMERS TO CHANGE THEIR ID. WHICH IS GENERALLY BAD
+            updatedCustomer.setCPW(ucpw);
+            updatedCustomer.setCFN(ucfn);
+            updatedCustomer.setCLN(ucln);
+            updatedCustomer.setCEM(ucem);
+            updatedCustomer.updateDB();
+
+            // THE REDIRECTS WILL NEED TO CHANGE BASED ON THE JSPS MADE
+            out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+            out.println("<script type='text/javascript'>");// looks like this alery
+            out.println("alert('Your information has been updated!');");// in this case just an alert with nothing in the body
+            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+            out.println("</script>");//the rest is to just close the remaining html page
+            out.println("</body></html>"); 
+//            response.sendRedirect("customerAccountDetails.jsp");
         } //end of try
         catch(Exception e){
             System.out.println(e);
         }
         finally {
-            System.out.println("UpdatePatientServlet ending...");
+            System.out.println("UpdateCustomerServlet ending...");
             out.close();
         }//end finally
 

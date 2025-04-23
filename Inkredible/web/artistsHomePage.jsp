@@ -129,7 +129,7 @@
             <a href="artistAccountDetails.jsp">
                 <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
             </a>
-            <a href="home.jsp">
+            <a href="index.html">
                 <img src="menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">
@@ -144,6 +144,9 @@
             <a href="reviews.jsp">
                 <img src="menuReviews.png" alt="Reviews" title="Reviews">
             </a>
+            <form action="logoutServlet" method="post">
+                <button type="submit" class="login-btn">Logout</button>
+            </form>
         </nav>
     </div>
 

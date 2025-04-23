@@ -150,7 +150,7 @@
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
-            <a href="home.jsp">
+            <a href="index.html">
                 <img src="img/menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">

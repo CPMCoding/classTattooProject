@@ -164,33 +164,33 @@
         </tbody>
     </table>
 
-    <h5>NOTICE: You are not able to change your ID number!</h5>
+    <h5>NOTICE: To see any changes you will need to re-log!</h5>
 
-    <form id="edit" action="updateArtistInformation" method="post">
+    <form id="edit" action="UpdateCustomerServlet" method="post">
         <table>
             <thead>
                 <tr><th colspan="2">Edit Your Info</th></tr>
             </thead>
             <tbody>
-                <tr>
+<!--                <tr>
                     <td>Username:</td>
                     <td><input type="text" name="cutb" value="<%= c1.getCID() %>" placeholder="Username..."></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td>Password:</td>
-                    <td><input type="text" name="cptb" value="<%= c1.getCPW() %>" placeholder="Password..."></td>
+                    <td><input type="text" name="dptb" value="<%= c1.getCPW() %>" placeholder="Password..."></td>
                 </tr>
                 <tr>
                     <td>First Name:</td>
-                    <td><input type="text" name="cftb" value="<%= c1.getCFN() %>" placeholder="First Name..."></td>
+                    <td><input type="text" name="dftb" value="<%= c1.getCFN() %>" placeholder="First Name..."></td>
                 </tr>
                 <tr>
                     <td>Last Name:</td>
-                    <td><input type="text" name="cltb" value="<%= c1.getCLN() %>" placeholder="Last Name..."></td>
+                    <td><input type="text" name="dltb" value="<%= c1.getCLN() %>" placeholder="Last Name..."></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" name="cetb" value="<%= c1.getCEM() %>" placeholder="Email..."></td>
+                    <td><input type="text" name="detb" value="<%= c1.getCEM() %>" placeholder="Email..."></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit Change"></td>

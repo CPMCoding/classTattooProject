@@ -27,10 +27,10 @@ public class createAppointment extends HttpServlet {
         Appointments a1 = new Appointments();
 
         c1 = (Customers) ses1.getAttribute("c1");
-        a1 = (Appointments) ses1.getAttribute("a1");
+//        a1 = (Appointments) ses1.getAttribute("a1");
 
         String custID = c1.getCID();
-        a1.selectCustDB(custID);
+//        a1.selectCustDB(custID);
         
         try {
         String nacid = c1.getCID();
@@ -44,13 +44,15 @@ public class createAppointment extends HttpServlet {
         System.out.println("aid: " + naaid);
 //        System.out.println("cst: " + nacst);
         
+        System.out.println("start of boolean");
         
         
         ///////       make it to where the customer creates a id and submits it, have it be checked against the ids in the database and if it comes back TRUE then make it to where the customer DOES NOT create the account. If it comes back FALSE let it go through
         Appointments newAppointment = new Appointments();
         boolean timeExists = newAppointment.checkTIME(naadt);
-
+           System.out.println("inside of boolean");
         if (timeExists) {
+            System.out.println("inside if");
             // This works by sending the strings into a responce stream that reads it as normal html code
             out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
             out.println("<script type='text/javascript'>");// looks like this alery
@@ -60,13 +62,21 @@ public class createAppointment extends HttpServlet {
             out.println("</body></html>"); 
         } 
         else {
+            System.out.println("else start");
             newAppointment.setCID(nacid);
             newAppointment.setADT(naadt);
             newAppointment.setAID(naaid);
 //            newAppointment.setTCST(ncln);
             newAppointment.insertDBCust(naadt, nacid, naaid);
 
-            response.sendRedirect("appointmentCreated.jsp"); // sends customer to sign in page after clocking on another button
+            //            / This works by sending the strings into a responce stream that reads it as normal html code
+            out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
+            out.println("<script type='text/javascript'>");// looks like this alery
+            out.println("alert('Appointment Created!');");// in this case just an alert with nothing in the body
+            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
+            out.println("</script>");//the rest is to just close the remaining html page
+            out.println("</body></html>"); 
+//            response.sendRedirect("appointmentCreated.jsp"); // sends customer to sign in page after clocking on another button
         }
         } //end of try
         catch(Exception e){

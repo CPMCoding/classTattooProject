@@ -431,7 +431,9 @@
     <div class="container">
         <div class="sidebar">
             <div class="logo">
-                <img src="img/logo.png" alt="INKREDIBLE Logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
             </div>
             <div class="title">INKREDIBLE</div>
             <nav class="nav">
@@ -523,7 +525,7 @@
                 <!-- Artist 3 -->
                 <div class="artist-card">
                     <div class="artist-info">
-                        <h2 class="artist-name">Martin Christopher</h2>
+                        <h2 class="artist-name">Christopher Martin</h2>
                         <span class="artist-specialty">Traditional & Minimalist Tattoos</span>
                         <p class="artist-bio">Martin's bold, vibrant traditional designs celebrate the roots of tattoo art, while his minimalist pieces reflect a modern and understated elegance. His versatility makes him a sought-after artist for clients seeking timeless or contemporary tattoos.</p>
                         <a href="artist3.jsp" class="view-portfolio">View Portfolio <i class="fas fa-arrow-right"></i></a>
@@ -554,7 +556,7 @@
                 <!-- Artist 4 -->
                 <div class="artist-card">
                     <div class="artist-info">
-                        <h2 class="artist-name">Touchstone Bryce</h2>
+                        <h2 class="artist-name">Bryce Touchstone</h2>
                         <span class="artist-specialty">Watercolor & Minimalist Tattoos</span>
                         <p class="artist-bio">Bryce's delicate touch and artistic sensibility shine in his watercolor tattoos, which mimic the fluidity of paint. His minimalist designs highlight clean lines and simplicity, making each tattoo feel like a personal statement of elegance.</p>
                         <a href="artist4.jsp" class="view-portfolio">View Portfolio <i class="fas fa-arrow-right"></i></a>
@@ -585,7 +587,7 @@
                 <!-- Artist 5 -->
                 <div class="artist-card">
                     <div class="artist-info">
-                        <h2 class="artist-name">Jose Alexis</h2>
+                        <h2 class="artist-name">Alexis Jose</h2>
                         <span class="artist-specialty">Traditional & Geometric Tattoos</span>
                         <p class="artist-bio">Jose Alexis creates bold traditional tattoos with a modern twist and is also renowned for intricate geometric designs. His work reflects a deep appreciation for symmetry, history, and vibrant storytelling through ink.</p>
                         <a href="artist5.jsp" class="view-portfolio">View Portfolio <i class="fas fa-arrow-right"></i></a>

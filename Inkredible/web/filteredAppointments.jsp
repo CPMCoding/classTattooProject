@@ -131,7 +131,7 @@
             <a href="artistAccountDetails.jsp">
                 <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
             </a>
-            <a href="home.jsp">
+            <a href="index.html">
                 <img src="menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">

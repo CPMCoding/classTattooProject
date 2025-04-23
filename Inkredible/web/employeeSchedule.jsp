@@ -165,7 +165,7 @@
     <div class="title">INKREDIBLE</div>
     <nav class="nav">
         <a href="adminHomePage.jsp">
-            <!-- <img src="menuHome.png" alt="adminHome" title="Admin Home Page"> -->
+             <!--<img src="menuHome.png" alt="adminHome" title="Admin Home Page">--> 
             <span>Admin Home</span>
         </a>
     </nav>
@@ -190,7 +190,6 @@
         </table>
     </div>
 
-    <h3>Employee Schedule Search</h3>
     <form action="updateSchedule" method="post">  
         <h3>Change Employee Schedule</h3>
         <p>Username</p>

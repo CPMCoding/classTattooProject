@@ -422,7 +422,9 @@
         <div class="sidebar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="img/logo.png" alt="INKREDIBLE Logo">
+                    <a href="index.html">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
                 </a>
             </div>
             <div class="title">INKREDIBLE</div>

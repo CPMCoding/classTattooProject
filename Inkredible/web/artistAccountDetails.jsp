@@ -127,7 +127,7 @@
         <a href="artistsHomePage.jsp">
             <img src="artistHomePage.png" alt="Artist Home Page" title="Artist Home Page">
         </a>
-        <a href="artistsAccountDetails.jsp">
+        <a href="artistAccountDetails.jsp">
             <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
         </a>
     </nav>
@@ -154,36 +154,37 @@
         </table>
     </form>
 
-    <form id="edit" action="updateArtistInformation">
-        <table border="3">
+    <h5>NOTICE: To see any changes you will need to re-log!</h5>
+
+    <form id="edit" action="UpdateArtistServlet" method="post">
+        <table>
             <thead>
-                <tr><td colspan="2">To change your information use the form below:</td></tr>
+                <tr><th colspan="2">Edit Your Info</th></tr>
             </thead>
-            <h5>NOTICE: You are not able to change your ID number!</h5>
             <tbody>
-                <tr>
+<!--                <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="autb" value="<jsp:getProperty name='a1' property='AID' />" placeholder="Username..."></td>
-                </tr>
+                    <td><input type="text" name="cutb" value="<%= a1.getAID() %>" placeholder="Username..."></td>
+                </tr>-->
                 <tr>
                     <td>Password:</td>
-                    <td><input type="text" name="aptb" value="<jsp:setProperty name='a1' property='APW' />" placeholder="Password..."></td>
+                    <td><input type="text" name="dptb" value="<%= a1.getAPW() %>" placeholder="Password..."></td>
                 </tr>
                 <tr>
                     <td>First Name:</td>
-                    <td><input type="text" name="aftb" value="<jsp:setProperty name='a1' property='AFN' />" placeholder="First Name..."></td>
+                    <td><input type="text" name="dftb" value="<%= a1.getAFN() %>" placeholder="First Name..."></td>
                 </tr>
                 <tr>
                     <td>Last Name:</td>
-                    <td><input type="text" name="altb" value="<jsp:setProperty name='a1' property='ALN' />" placeholder="Last Name..."></td>
+                    <td><input type="text" name="dltb" value="<%= a1.getALN() %>" placeholder="Last Name..."></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" name="aetb" value="<jsp:setProperty name='a1' property='AEM' />" placeholder="Email..."></td>
+                    <td><input type="text" name="detb" value="<%= a1.getAEM() %>" placeholder="Email..."></td>
                 </tr>
                 <tr>
                     <td>Style:</td>
-                    <td><input type="text" name="astb" value="<jsp:setProperty name='a1' property='ASY' />" placeholder="Style..."></td>
+                    <td><input type="text" name="dastb" value="<%= a1.getASY() %>" placeholder="Style..."></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit Change"></td>

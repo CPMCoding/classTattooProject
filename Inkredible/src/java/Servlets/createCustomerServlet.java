@@ -55,6 +55,7 @@ public class createCustomerServlet extends HttpServlet {
             newCustomer.setCEM(ncem);
             newCustomer.insertDB(ncid, ncem, ncpw, ncfn, ncln);
 
+
             response.sendRedirect("customerAccountCreated.jsp"); // sends customer to sign in page after clocking on another button
         }
         } //end of try

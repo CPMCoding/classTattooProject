@@ -230,6 +230,9 @@
                     <!-- <img src="customerAccountDetails.png" alt="Account Details" title="Account Details"> -->
                     <span>Account</span>
                 </a>
+                <form action="logoutServlet" method="post">
+                    <button type="submit" class="login-btn">Logout</button>
+                </form>
             </nav>
         </div>
 
@@ -237,7 +240,7 @@
             <div class="text">
                 <h1>Welcome, <%= c1.getCFN()%>!</h1>
 
-                <table>
+<!--                <table>
                     <tr>
                         <th>Customer ID</th>
                         <th>Password</th>
@@ -261,7 +264,7 @@
                     <input type="text" name="cLN" class="input-field" placeholder="Last Name">
                     <input type="text" name="cEM" class="input-field" placeholder="Email">
                     <button type="submit" class="login-btn">Update</button>
-                </form>
+                </form>-->
 
                 <h2>Appointment Information</h2>
                 <table>
