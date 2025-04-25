@@ -1,4 +1,4 @@
-
+mask-mode: luminance;
 
 #columns {
     width: 100%;
@@ -17,6 +17,13 @@
 	float: right;
 }
 @media (max-width: 600px) {
-   #leftcol { float: none; }
+/*   #leftcol { float: none; }
    #rightcol { float: none; }
+   */
+   #leftcol,#rightcol {
+   float: left;
+   margin: 0 0 10px; /* SET THIS TO WHAT LOOKS GOOD */
+   width: 100%;
+   }
 }
+

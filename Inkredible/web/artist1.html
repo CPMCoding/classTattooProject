@@ -140,12 +140,14 @@
 			-webkit-mask-image: url(img/irregularmask.png);
 			mask-image: url(img/irregularmask.png);
 			mask-repeat: no-repeat;
+			mask-mode: luminance;
         }
 		
-		.masked {
+		.masked img{
 			-webkit-mask-image: url(img/irregularmask.png);
 			mask-image: url(img/irregularmask.png);
 			mask-repeat: no-repeat;
+			mask-mode: luminance;
         }
 		
 		
@@ -177,7 +179,7 @@
                 Jose is a master of hyper-realistic designs, turning ideas into lifelike art.
                 With a keen eye for detail, he excels at crafting geometric patterns that captivate with their symmetry and precision. 
                 His works are a blend of technical expertise and artistic flair.</p>
-            <div id="columns">
+            <div id="columns" class=masked>
                 <div id="leftcol">
                     <img src="img/tat11.jpg" alt="Artist 1 Picture 4" width=96% class=masked id=masked>
 					<p>
