@@ -138,8 +138,12 @@
     </div>
     <div class="title">INKREDIBLE</div>
     <nav class="nav">
-        <a href="index.html">
+<!--        <a href="index.html">
             <img src="img/menuHome.png" alt="Home" title="Home">
+        </a>-->
+        <a href="customerHomePage.jsp">
+            <!-- <img src="customerAccountDetails.png" alt="Account Details" title="Account Details"> -->
+            <span>Account Home</span>
         </a>
         <a href="customerAccountDetails.jsp">
             <!-- <img src="customerAccountDetails.png" alt="Account Details" title="Account Details"> -->
