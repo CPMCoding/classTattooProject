@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Artists</title>
     <style>
         body {
@@ -119,7 +120,7 @@
     
     <div class="sidebar">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="img/logo.png" alt="Logo">
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
