@@ -32,16 +32,16 @@
 
 
             .logo {
-                width: 120px;
+          
                 height: 120px;
-                margin-bottom: 10px;
+                
             }
 
             .logo img {
                 width: 100%;
                 height: 100%;
-                border-radius: 50%;
-                object-fit: cover;
+               
+                
             }
 
             .title {

@@ -36,10 +36,9 @@
         }
 
         .logo img {
-            width: 100%;
+           
             height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
+           
         }
 
         .title {
@@ -91,13 +90,7 @@
             max-width: 600px;
         }
 
-        .image img {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+       
     </style>
 </head>
 <body>
@@ -119,7 +112,7 @@
     
     <div class="sidebar">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="img/logo.png" alt="Logo">
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
@@ -130,19 +123,19 @@
                 <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
             </a>
             <a href="index.html">
-                <img src="menuHome.png" alt="Home" title="Home">
+                <img src="img/menuHome.png" alt="Home" title="Home">
             </a>
             <a href="design.jsp">
-                <img src="menuDesigns.png" alt="Designs" title="Designs">
+                <img src="img/menuDesigns.png" alt="Designs" title="Designs">
             </a>
             <a href="artists.jsp">
-                <img src="menuArtists.png" alt="Artists" title="Artists">
+                <img src="img/menuArtists.png" alt="Artists" title="Artists">
             </a>
             <a href="schedule.jsp">
-                <img src="menuSchedule.png" alt="Schedule" title="Schedule">
+                <img src="img/menuSchedule.png" alt="Schedule" title="Schedule">
             </a>
             <a href="reviews.jsp">
-                <img src="menuReviews.png" alt="Reviews" title="Reviews">
+                <img src="img/menuReviews.png" alt="Reviews" title="Reviews">
             </a>
             <form action="logoutServlet" method="post">
                 <button type="submit" class="login-btn">Logout</button>
@@ -222,9 +215,7 @@
         </div>
     </div>
 
-    <div class="image">
-        <img src="background3.png" alt="Background" title="Background">
-    </div>
+   
 </body>
 </html>
 <!ARTIST HOME PAGE. USING ARTIST.JSP AS A BASE>
