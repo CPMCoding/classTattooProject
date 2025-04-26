@@ -552,7 +552,7 @@
                             </div>
                         </div>
                         <div class="design-card">
-                            <img src="img/traditional5.jpg" alt="Traditional panther tattoo">
+                            <img src="img/Traditional5.jpg" alt="Traditional panther tattoo">
                             <div class="design-overlay">
                                 <div class="design-info">
                                     <div class="design-title">Panther Design</div>
@@ -666,7 +666,7 @@
                             </div>
                         </div>
                         <div class="design-card">
-                            <img src="img/geo5.jpg" alt="Geometric dotwork tattoo">
+                            <img src="img/geo5.png" alt="Geometric dotwork tattoo">
                             <div class="design-overlay">
                                 <div class="design-info">
                                     <div class="design-title">Dotwork Art</div>
