@@ -200,7 +200,7 @@
 
 
                     <tr>
-                        <td><%= aP1.getADT()%></td> <!displays appointment date time>
+                    <td><%= aP1.getADT()%></td> <!displays appointment date time>
                     <td><%= aP1.getCID()%></td> <!displays appointment customer ID>
                     <td><%= aP1.getAID()%></td> <!displays appointment artist ID>
                     <td><%= aP1.getTCST()%></td> <!displays appointment cost>
@@ -221,6 +221,7 @@
                         <%
                             for (int i = 0; i < a1.aList.count; i++) {
                                 aP2 = appointment[i];
+                                if (aP2.getCID() != null && !aP2.getCID().trim().isEmpty()){ 
                         %>
 
                         <option value="<%= aP2.getCID()%>"> <!Value being used in servlet>
@@ -228,7 +229,8 @@
                         </option>
 
                         <%
-
+                            
+                                }
                             }
                         %>
 
