@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Artist Account Information Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -121,7 +120,7 @@
 
 <div class="sidebar">
     <div class="logo">
-        <img src="img/logo.png" alt="Logo">
+        <img src="logo.png" alt="Logo">
     </div>
     <div class="title">INKREDIBLE</div>
     <nav class="nav">
