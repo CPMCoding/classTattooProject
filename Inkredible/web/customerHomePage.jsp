@@ -303,35 +303,33 @@
                 %>
                 
                 <h2>Available Appointments</h2>
-                <table>
-                    <tr>
-                        <th> Appointment Date & Time </th>
-                        <th>Artist</th>
-                    </tr>
-                    
+                <form method="post" action="createAppointment">
+                    <label for="appointment">Select Appointment Date/Time & Artist</label>
+                    <select name="ApptDT" id="ApptDT">
                     <%
                         for(int i = 0; i < availableList.count; i++){
                             aP2 = availableAppts[i];
                         
                     %>
-                    <tr>
-                        <td><%=aP2.getADT()%></td>
-                        <td><%=aP2.getAID()%></td>
-                    </tr>
+                    
+                    <option value="<%=aP2.getADT()%>">
+                        Date & Time: <%=aP2.getADT()%> || Artist: <%=aP2.getAID()%>
+                    </option>
                     
                     <%
                         }
                     %>
-                    
-                    
-                </table>
+                    </select>
+                    <button type="submit" class="login-btn">Select</button>
+                </form>  
 
-                <h2>Create Appointment</h2>
+               <!-- <h2>Create Appointment</h2>
                 <form action="createAppointment" method="post">
                     <input type="text" name="naAID" class="input-field" placeholder="Artist ID">
                     <input type="text" name="naADT" class="input-field" placeholder="Appointment Time">
                     <button type="submit" class="login-btn">Create</button>
                 </form>
+               -->
             </div>
         </div>
 

@@ -33,59 +33,27 @@ public class createAppointment extends HttpServlet {
 //        a1.selectCustDB(custID);
         
         try {
-        String nacid = c1.getCID();
-//        String nacid = request.getParameter("naCID");
-        String naadt = request.getParameter("naADT");
-        String naaid = request.getParameter("naAID");
-//        String nacst = request.getParameter("naCST");
-        
-        System.out.println("cid: " + nacid);
-        System.out.println("adt:  " + naadt);
-        System.out.println("aid: " + naaid);
-//        System.out.println("cst: " + nacst);
-        
-        System.out.println("start of boolean");
-        
-        
-        ///////       make it to where the customer creates a id and submits it, have it be checked against the ids in the database and if it comes back TRUE then make it to where the customer DOES NOT create the account. If it comes back FALSE let it go through
-        Appointments newAppointment = new Appointments();
-        boolean timeExists = newAppointment.checkTIME(naadt);
-           System.out.println("inside of boolean");
-        if (timeExists) {
-            System.out.println("inside if");
-            // This works by sending the strings into a responce stream that reads it as normal html code
-            out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
-            out.println("<script type='text/javascript'>");// looks like this alery
-            out.println("alert('That time is already taken!');");// in this case just an alert with nothing in the body
-            out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
-            out.println("</script>");//the rest is to just close the remaining html page
-            out.println("</body></html>"); 
-        } 
-        else {
-            System.out.println("else start");
-            newAppointment.setCID(nacid);
-            newAppointment.setADT(naadt);
-            newAppointment.setAID(naaid);
-//            newAppointment.setTCST(ncln);
-            newAppointment.insertDBCust(naadt, nacid, naaid);
+            String nacid = c1.getCID();
+    //        String nacid = request.getParameter("naCID");
+            String naadt = request.getParameter("ApptDT");
+    //        String nacst = request.getParameter("naCST");
 
-            //            / This works by sending the strings into a responce stream that reads it as normal html code
+            a1.selectADTDB(naadt);
+            a1.setCID(nacid);
+            a1.updateDBCust();
+
+            System.out.println("start of boolean");
+
             out.println("<html><body>"); // making it where if the idexists it will redirectto a webpage that 
             out.println("<script type='text/javascript'>");// looks like this alery
             out.println("alert('Appointment Created!');");// in this case just an alert with nothing in the body
             out.println("window.history.back();");//this sends the user back to the previous page when the "ok button is clicked on the alert"
             out.println("</script>");//the rest is to just close the remaining html page
             out.println("</body></html>"); 
-//            response.sendRedirect("appointmentCreated.jsp"); // sends customer to sign in page after clocking on another button
         }
-        } //end of try
         catch(Exception e){
             System.out.println(e);
         }
-        finally {
-            System.out.println("Create appointment Servlet ending...");
-            out.close();
-        }//end finally
     }// end process req
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -186,6 +186,31 @@ public class Appointments {
         }
     }
     
+    public void updateDBCust(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //If you have issues connecting the DB, change the file location here. It should work as long as you keep the DB Inkcredibles folder. KEEP IN MAIN DIRECTORY //
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:/GitHub/Class Project/classTattooProject/TattooProject.accdb");
+            
+            Statement stmt = con.createStatement();
+            String sql = "Update Appointments Set customerID = '" + custID + "'Where appointmentDateTime = '" + apptDT + "'";
+            System.out.println(sql);
+            //executeUpdate needs to be used when updating a database executeQuery won't work here. 
+            int n1 = stmt.executeUpdate(sql);
+                if (n1==1){
+                    System.out.println("UPDATE Successful!!!");
+                }
+                else {
+                    System.out.println("UPDATE FAILED !!!!!!!!!!!!!!!!!!!");
+                }
+            con.close();
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
     public void insertDB(String aDT, String aCID, String aAID, String aCost){
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
