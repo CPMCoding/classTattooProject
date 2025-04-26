@@ -123,16 +123,17 @@
         </div>
         <div class="title">INKREDIBLE</div>
         <nav class="nav">
-            <a href="artistsHomePage.jsp">
+<!--            <a href="artistsHomePage.jsp">
                 <img src="artistHomePage.png" alt="Artist Home Page" title="Artist Home Page">
+            </a>-->
+            <a href="index.html">
+                <img src="menuHome.png" alt="Home" title="Home">
             </a>
             <a href="artistAccountDetails.jsp">
                 <img src="artistAccountDetails.png" alt="Account Details" title="Account Details">
             </a>
-            <a href="index.html">
-                <img src="menuHome.png" alt="Home" title="Home">
-            </a>
-            <a href="design.jsp">
+            
+<!--            <a href="design.jsp">
                 <img src="menuDesigns.png" alt="Designs" title="Designs">
             </a>
             <a href="artists.jsp">
@@ -143,7 +144,7 @@
             </a>
             <a href="reviews.jsp">
                 <img src="menuReviews.png" alt="Reviews" title="Reviews">
-            </a>
+            </a>-->
             <form action="logoutServlet" method="post">
                 <button type="submit" class="login-btn">Logout</button>
             </form>
