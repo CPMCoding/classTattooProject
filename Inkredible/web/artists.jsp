@@ -503,18 +503,7 @@
                             <div class="slides">
                                 <img src="img/john1.jfif" alt="Watercolor Tattoo by John Licata">
                             </div>
-                            <div class="slides">
-                                <img src="img/artist2_2.jpg" alt="Realistic Portrait by John Licata">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist2_3.jpg" alt="Colorful Design by John Licata">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist2_4.jpg" alt="John Licata working on client">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist2_5.jpg" alt="Detailed Work by John Licata">
-                            </div>
+                           
                             <button class="prev" onclick="plusSlides(-1, this.parentNode.parentNode)">❮</button>
                             <button class="next" onclick="plusSlides(1, this.parentNode.parentNode)">❯</button>
                         </div>
@@ -534,18 +523,7 @@
                             <div class="slides">
                                 <img src="img/chris1.jpg" alt="Traditional Tattoo by Martin Christopher">
                             </div>
-                            <div class="slides">
-                                <img src="img/artist3_2.jpg" alt="Minimalist Design by Martin Christopher">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist3_3.jpg" alt="Martin Christopher at work">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist3_4.jpg" alt="Detailed Traditional Piece">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist3_5.jpg" alt="Minimalist Art by Martin">
-                            </div>
+                            
                             <button class="prev" onclick="plusSlides(-1, this.parentNode.parentNode)">❮</button>
                             <button class="next" onclick="plusSlides(1, this.parentNode.parentNode)">❯</button>
                         </div>
@@ -565,18 +543,7 @@
                             <div class="slides">
                                 <img src="img/bryce1.jfif" alt="Watercolor Art by Bryce">
                             </div>
-                            <div class="slides">
-                                <img src="img/artist4_2.jpg" alt="Minimalist Design by Bryce">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist4_3.jpg" alt="Bryce working on client">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist4_4.jpg" alt="Colorful Watercolor Piece">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist4_5.jpg" alt="Detailed Minimalist Work">
-                            </div>
+                           
                             <button class="prev" onclick="plusSlides(-1, this.parentNode.parentNode)">❮</button>
                             <button class="next" onclick="plusSlides(1, this.parentNode.parentNode)">❯</button>
                         </div>
@@ -596,18 +563,7 @@
                             <div class="slides">
                                 <img src="img/alexis1.jpg" alt="Traditional Design by Jose Alexis">
                             </div>
-                            <div class="slides">
-                                <img src="img/artist5_2.jpg" alt="Geometric Art by Jose Alexis">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist5_3.jpg" alt="Jose Alexis at work">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist5_4.jpg" alt="Detailed Traditional Piece">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist5_5.jpg" alt="Complex Geometric Design">
-                            </div>
+                            
                             <button class="prev" onclick="plusSlides(-1, this.parentNode.parentNode)">❮</button>
                             <button class="next" onclick="plusSlides(1, this.parentNode.parentNode)">❯</button>
                         </div>
