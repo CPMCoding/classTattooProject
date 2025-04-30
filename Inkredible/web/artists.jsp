@@ -470,21 +470,20 @@
                     </div>
                     <div class="artist-gallery">
                         <div class="slideshow-container">
+                             <div class="slides">
+                                <img src="img/Jose1.jpg" alt="Detailed Work by Jose Garcia">
+                            </div>
                             <div class="slides">
                                 <img src="img/realismTattoo_1.jpg" alt="Realism Tattoo by Jose Garcia">
                             </div>
                             <div class="slides">
-                                <img src="img/artist1_2.jpg" alt="Geometric Tattoo by Jose Garcia">
+                                <img src="img/realismTattoo_2.jpg" alt="Geometric Tattoo by Jose Garcia">
                             </div>
                             <div class="slides">
-                                <img src="img/artist1_3.jpg" alt="Portrait Tattoo by Jose Garcia">
+                                <img src="img/realismTattoo_3.jpg" alt="Portrait Tattoo by Jose Garcia">
                             </div>
-                            <div class="slides">
-                                <img src="img/artist1_4.jpg" alt="Detailed Work by Jose Garcia">
-                            </div>
-                            <div class="slides">
-                                <img src="img/artist1_5.jpg" alt="Jose Garcia at work">
-                            </div>
+                           
+                           
                             <button class="prev" onclick="plusSlides(-1, this.parentNode.parentNode)">❮</button>
                             <button class="next" onclick="plusSlides(1, this.parentNode.parentNode)">❯</button>
                         </div>
@@ -502,7 +501,7 @@
                     <div class="artist-gallery">
                         <div class="slideshow-container">
                             <div class="slides">
-                                <img src="img/artist2_1.jpg" alt="Watercolor Tattoo by John Licata">
+                                <img src="img/john1.jfif" alt="Watercolor Tattoo by John Licata">
                             </div>
                             <div class="slides">
                                 <img src="img/artist2_2.jpg" alt="Realistic Portrait by John Licata">
@@ -533,7 +532,7 @@
                     <div class="artist-gallery">
                         <div class="slideshow-container">
                             <div class="slides">
-                                <img src="img/artist3_1.jpg" alt="Traditional Tattoo by Martin Christopher">
+                                <img src="img/chris1.jpg" alt="Traditional Tattoo by Martin Christopher">
                             </div>
                             <div class="slides">
                                 <img src="img/artist3_2.jpg" alt="Minimalist Design by Martin Christopher">
@@ -564,7 +563,7 @@
                     <div class="artist-gallery">
                         <div class="slideshow-container">
                             <div class="slides">
-                                <img src="img/artist4_1.jpg" alt="Watercolor Art by Bryce">
+                                <img src="img/bryce1.jfif" alt="Watercolor Art by Bryce">
                             </div>
                             <div class="slides">
                                 <img src="img/artist4_2.jpg" alt="Minimalist Design by Bryce">
@@ -595,7 +594,7 @@
                     <div class="artist-gallery">
                         <div class="slideshow-container">
                             <div class="slides">
-                                <img src="img/artist5_1.jpg" alt="Traditional Design by Jose Alexis">
+                                <img src="img/alexis1.jpg" alt="Traditional Design by Jose Alexis">
                             </div>
                             <div class="slides">
                                 <img src="img/artist5_2.jpg" alt="Geometric Art by Jose Alexis">
